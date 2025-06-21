@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/angular';
-
+// import './preview.css';
 const preview: Preview = {
   parameters: {
     controls: {
@@ -39,7 +39,14 @@ const preview: Preview = {
     (Story, context) => {
       const { theme } = context.globals;
       
-      // Add theme class to the body
+      // Set theme data attribute for CSS variables
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+      
+      // Also add theme class to the body for legacy support
       document.body.className = `theme-${theme}`;
       
       return Story();

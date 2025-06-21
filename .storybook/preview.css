@@ -1,0 +1,196 @@
+/* Global Storybook styles */
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Import design system variables and styles */
+/* Light theme is default */
+:root {
+  /* Color system */
+  --color-primary: #2196f3;
+  --color-primary-light: #64b5f6;
+  --color-primary-dark: #1976d2;
+  --color-primary-hover: #1e88e5;
+  --color-primary-active: #1976d2;
+  --color-primary-disabled: rgba(33, 150, 243, 0.5);
+  --color-primary-rgb: 33, 150, 243;
+  
+  --color-secondary: #e91e63;
+  --color-secondary-light: #f06292;
+  --color-secondary-dark: #c2185b;
+  --color-secondary-hover: #d81b60;
+  --color-secondary-active: #c2185b;
+  --color-secondary-disabled: rgba(233, 30, 99, 0.5);
+  --color-secondary-rgb: 233, 30, 99;
+  
+  /* Surface colors */
+  --color-surface: #ffffff;
+  --color-surface-hover: rgba(0, 0, 0, 0.04);
+  --color-surface-active: rgba(0, 0, 0, 0.08);
+  
+  /* Background colors */
+  --color-background: #ffffff;
+  --color-background-subtle: #f5f5f5;
+  --color-background-muted: #eeeeee;
+  
+  /* Text colors */
+  --color-text-primary: #212121;
+  --color-text-secondary: #616161;
+  --color-text-tertiary: #9e9e9e;
+  --color-text-disabled: #bdbdbd;
+  --color-text-link: #2196f3;
+  --color-white: #ffffff;
+  --color-white-muted: rgba(255, 255, 255, 0.7);
+  
+  /* Border colors */
+  --color-border: #e0e0e0;
+  --color-border-hover: #bdbdbd;
+  --color-border-disabled: #f5f5f5;
+  
+  /* Status colors */
+  --color-success: #4caf50;
+  --color-warning: #ff9800;
+  --color-error: #f44336;
+  --color-info: #03a9f4;
+  --color-success-rgb: 76, 175, 80;
+  --color-warning-rgb: 255, 152, 0;
+  --color-error-rgb: 244, 67, 54;
+  --color-info-rgb: 3, 169, 244;
+  
+  /* Typography */
+  --font-family-base: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --font-size-xs: 0.75rem;   /* 12px */
+  --font-size-sm: 0.875rem;  /* 14px */
+  --font-size-base: 1rem;    /* 16px */
+  --font-size-lg: 1.125rem;  /* 18px */
+  --font-size-xl: 1.25rem;   /* 20px */
+  --font-size-2xl: 1.5rem;   /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem;  /* 36px */
+  --font-size-5xl: 3rem;     /* 48px */
+  
+  /* Spacing */
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;  /* 4px */
+  --spacing-2: 0.5rem;   /* 8px */
+  --spacing-3: 0.75rem;  /* 12px */
+  --spacing-4: 1rem;     /* 16px */
+  --spacing-5: 1.25rem;  /* 20px */
+  --spacing-6: 1.5rem;   /* 24px */
+  --spacing-7: 1.75rem;  /* 28px */
+  --spacing-8: 2rem;     /* 32px */
+  --spacing-10: 2.5rem;  /* 40px */
+  --spacing-12: 3rem;    /* 48px */
+  --spacing-16: 4rem;    /* 64px */
+  
+  /* Borders */
+  --border-radius-sm: 0.125rem; /* 2px */
+  --border-radius-md: 0.25rem;  /* 4px */
+  --border-radius-lg: 0.5rem;   /* 8px */
+  --border-radius-xl: 1rem;     /* 16px */
+  --border-radius-full: 9999px; /* Full rounded */
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+  
+  /* Line heights */
+  --line-height-none: 1;
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+  
+  /* Focus ring */
+  --focus-ring: 0 0 0 3px rgba(33, 150, 243, 0.5);
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  /* Color system */
+  --color-primary: #90caf9;
+  --color-primary-light: #bbdefb;
+  --color-primary-dark: #42a5f5;
+  --color-primary-hover: #64b5f6;
+  --color-primary-active: #42a5f5;
+  --color-primary-disabled: rgba(144, 202, 249, 0.5);
+  --color-primary-rgb: 144, 202, 249;
+  
+  --color-secondary: #f48fb1;
+  --color-secondary-light: #f8bbd0;
+  --color-secondary-dark: #ec407a;
+  --color-secondary-hover: #f06292;
+  --color-secondary-active: #ec407a;
+  --color-secondary-disabled: rgba(244, 143, 177, 0.5);
+  --color-secondary-rgb: 244, 143, 177;
+  
+  /* Surface colors */
+  --color-surface: #121212;
+  --color-surface-hover: rgba(255, 255, 255, 0.08);
+  --color-surface-active: rgba(255, 255, 255, 0.12);
+  
+  /* Background colors */
+  --color-background: #121212;
+  --color-background-subtle: #1e1e1e;
+  --color-background-muted: #2d2d2d;
+  
+  /* Text colors */
+  --color-text-primary: rgba(255, 255, 255, 0.87);
+  --color-text-secondary: rgba(255, 255, 255, 0.6);
+  --color-text-tertiary: rgba(255, 255, 255, 0.38);
+  --color-text-disabled: rgba(255, 255, 255, 0.38);
+  --color-text-link: #90caf9;
+  --color-white: #ffffff;
+  --color-white-muted: rgba(255, 255, 255, 0.6);
+  
+  /* Border colors */
+  --color-border: #424242;
+  --color-border-hover: #616161;
+  --color-border-disabled: #2d2d2d;
+  
+  /* Status colors */
+  --color-success: #81c784;
+  --color-warning: #ffb74d;
+  --color-error: #e57373;
+  --color-info: #4fc3f7;
+  --color-success-rgb: 129, 199, 132;
+  --color-warning-rgb: 255, 183, 77;
+  --color-error-rgb: 229, 115, 115;
+  --color-info-rgb: 79, 195, 247;
+  
+  /* Shadows (darker for better visibility in dark mode) */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+  
+  /* Focus ring */
+  --focus-ring: 0 0 0 3px rgba(144, 202, 249, 0.5);
+}

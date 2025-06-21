@@ -1,0 +1,35 @@
+<button
+  class="ds-button"
+  [class.ds-button--primary]="variant === 'primary'"
+  [class.ds-button--secondary]="variant === 'secondary'"
+  [class.ds-button--tertiary]="variant === 'tertiary'"
+  [class.ds-button--sm]="size === 'sm'"
+  [class.ds-button--md]="size === 'md'"
+  [class.ds-button--lg]="size === 'lg'"
+  [class.ds-button--full-width]="fullWidth"
+  [class.ds-button--loading]="loading"
+  [disabled]="disabled || loading"
+  [type]="type"
+  [attr.aria-label]="ariaLabel"
+  [attr.aria-disabled]="disabled || loading"
+  (click)="onClick($event)"
+  (mousedown)="pressed.set(true)"
+  (mouseup)="pressed.set(false)"
+  (mouseleave)="pressed.set(false)"
+>
+  <div class="ds-button__content">
+    <div *ngIf="loading" class="ds-button__spinner">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <circle
+          class="ds-button__spinner-circle"
+          cx="12"
+          cy="12"
+          r="10"
+          fill="none"
+          stroke-width="3"
+        ></circle>
+      </svg>
+    </div>
+    <ng-content></ng-content>
+  </div>
+</button>

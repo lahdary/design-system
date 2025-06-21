@@ -1,0 +1,60 @@
+/* Main styles for the design system */
+
+// Import themes
+@use './themes/light' as *;
+@use './themes/dark' as *;
+@use './mixins' as *;
+@use './variables' as *;
+
+// Global reset and base styles
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  font-family: var(--font-family-base);
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-base);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+// Accessibility
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+// Common global styles
+a {
+  color: var(--color-text-link);
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+}
+
+// Utility classes
+.visually-hidden {
+  @include visually-hidden;
+}
+
+// Import component styles
+// Component styles are imported by each component individually

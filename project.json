@@ -109,6 +109,9 @@
       "executor": "@storybook/angular:start-storybook",
       "options": {
         "port": 4400,
+        "styles": [
+          "libs/ui/src/lib/styles/index.scss"
+        ],
         "configDir": "./.storybook",
         "browserTarget": "design-system:build-storybook",
         "compodoc": false
@@ -127,6 +130,9 @@
       "options": {
         "outputDir": "dist/storybook/design-system",
         "configDir": "./.storybook",
+       "styles": [
+          "libs/ui/src/lib/styles/index.scss"
+        ],
         "browserTarget": "design-system:build-storybook",
         "compodoc": false
       },

@@ -1,0 +1,57 @@
+/* Dark theme variables */
+[data-theme="dark"] {
+  /* Color system */
+  --color-primary: #90caf9;
+  --color-primary-light: #bbdefb;
+  --color-primary-dark: #42a5f5;
+  --color-primary-hover: #64b5f6;
+  --color-primary-active: #42a5f5;
+  --color-primary-disabled: rgba(144, 202, 249, 0.5);
+  
+  --color-secondary: #f48fb1;
+  --color-secondary-light: #f8bbd0;
+  --color-secondary-dark: #ec407a;
+  --color-secondary-hover: #f06292;
+  --color-secondary-active: #ec407a;
+  --color-secondary-disabled: rgba(244, 143, 177, 0.5);
+  
+  /* Surface colors */
+  --color-surface: #121212;
+  --color-surface-hover: rgba(255, 255, 255, 0.08);
+  --color-surface-active: rgba(255, 255, 255, 0.12);
+  
+  /* Background colors */
+  --color-background: #121212;
+  --color-background-subtle: #1e1e1e;
+  --color-background-muted: #2d2d2d;
+  
+  /* Text colors */
+  --color-text-primary: rgba(255, 255, 255, 0.87);
+  --color-text-secondary: rgba(255, 255, 255, 0.6);
+  --color-text-tertiary: rgba(255, 255, 255, 0.38);
+  --color-text-disabled: rgba(255, 255, 255, 0.38);
+  --color-text-link: #90caf9;
+  --color-white: #ffffff;
+  --color-white-muted: rgba(255, 255, 255, 0.6);
+  
+  /* Border colors */
+  --color-border: #424242;
+  --color-border-hover: #616161;
+  --color-border-disabled: #2d2d2d;
+  
+  /* Status colors */
+  --color-success: #81c784;
+  --color-warning: #ffb74d;
+  --color-error: #e57373;
+  --color-info: #4fc3f7;
+  
+  /* Shadows (darker for better visibility in dark mode) */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+  
+  /* Focus ring */
+  --focus-ring: 0 0 0 3px rgba(144, 202, 249, 0.5);
+}

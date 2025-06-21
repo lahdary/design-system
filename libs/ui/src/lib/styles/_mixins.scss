@@ -1,0 +1,56 @@
+/* Mixins for the design system */
+
+// Visually hidden (for accessibility)
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// Truncate text with ellipsis
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Responsive breakpoints
+@mixin media-breakpoint($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (min-width: 576px) { @content; }
+  } @else if $breakpoint == 'md' {
+    @media (min-width: 768px) { @content; }
+  } @else if $breakpoint == 'lg' {
+    @media (min-width: 992px) { @content; }
+  } @else if $breakpoint == 'xl' {
+    @media (min-width: 1200px) { @content; }
+  } @else if $breakpoint == 'xxl' {
+    @media (min-width: 1400px) { @content; }
+  }
+}
+
+// Flexbox center
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Text styles
+@mixin text-style($size, $weight: regular, $line-height: normal) {
+  font-size: var(--font-size-#{$size});
+  font-weight: var(--font-weight-#{$weight});
+  line-height: var(--line-height-#{$line-height});
+}
+
+// Focus ring
+@mixin focus-ring {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
