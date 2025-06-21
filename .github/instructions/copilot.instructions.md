@@ -47,7 +47,7 @@ design-system/
 │   ├── ui/                               # UI components library  
 │   │   ├── src/
 │   │   │   ├── lib/
-│   │   │   │   ├── components/           # Component categories
+│   │   │   │   ├── components/           # Component categoriehttps://nx.dev/technologies/test-tools/jest/introductions
 │   │   │   │   │   ├── buttons/          # Button components
 │   │   │   │   │   │   ├── button/       # Basic button component
 │   │   │   │   │   │   │   ├── button.component.ts
