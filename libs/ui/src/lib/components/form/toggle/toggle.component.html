@@ -1,0 +1,58 @@
+<div class="ds-toggle-wrapper" [class.ds-toggle-wrapper--disabled]="disabled()">
+  <label 
+    *ngIf="label() && labelPosition() === 'left'" 
+    class="ds-toggle-label ds-toggle-label--left"
+    [for]="id()"
+  >
+    {{ label() }}
+    <span *ngIf="required()" class="ds-toggle-required-indicator">*</span>
+  </label>
+  
+  <div 
+    class="ds-toggle" 
+    [class.ds-toggle--checked]="checked()" 
+    [class.ds-toggle--disabled]="disabled()" 
+    [class.ds-toggle--loading]="loading()"
+    [class.ds-toggle--sm]="size() === 'sm'"
+    [class.ds-toggle--md]="size() === 'md'"
+    [class.ds-toggle--lg]="size() === 'lg'"
+    (click)="onToggleChange()"
+    [attr.aria-disabled]="disabled() || loading()"
+  >
+    <input 
+      type="checkbox" 
+      class="ds-toggle-input" 
+      [id]="id()"
+      [checked]="checked()" 
+      [disabled]="disabled() || loading()"
+      [attr.aria-label]="ariaLabel() || label()"
+      [attr.aria-checked]="checked()"
+      [attr.aria-required]="required()"
+    />
+    <div class="ds-toggle-track">
+      <div class="ds-toggle-thumb">
+        <div *ngIf="loading()" class="ds-toggle-spinner">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle
+              class="ds-toggle-spinner-circle"
+              cx="12"
+              cy="12"
+              r="10"
+              fill="none"
+              stroke-width="3"
+            ></circle>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <label 
+    *ngIf="label() && labelPosition() === 'right'" 
+    class="ds-toggle-label ds-toggle-label--right"
+    [for]="id()"
+  >
+    {{ label() }}
+    <span *ngIf="required()" class="ds-toggle-required-indicator">*</span>
+  </label>
+</div>

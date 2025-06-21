@@ -1,0 +1,229 @@
+@use 'mixins' as *;
+
+.ds-tabs {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  
+  // Horizontal tabs layout (default)
+  &--horizontal {
+    flex-direction: column;
+    
+    // When tabs are at the bottom
+    &.ds-tabs--bottom {
+      flex-direction: column-reverse;
+    }
+    
+    .ds-tabs-nav {
+      flex-direction: row;
+      border-bottom: 1px solid var(--tabs-border-color);
+      
+      .ds-tab-button {
+        flex: 0 1 auto;
+        
+        &--active {
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--tabs-indicator-color);
+          }
+        }
+      }
+    }
+  }
+  
+  // Vertical tabs layout
+  &--vertical {
+    flex-direction: row;
+    
+    .ds-tabs-nav {
+      flex-direction: column;
+      border-right: 1px solid var(--tabs-border-color);
+      
+      .ds-tab-button {
+        text-align: left;
+        justify-content: flex-start;
+        
+        &--active {
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 2px;
+            background-color: var(--tabs-indicator-color);
+          }
+        }
+      }
+    }
+    
+    .ds-tabs-content {
+      flex: 1;
+    }
+  }
+}
+
+// Tab navigation styles
+.ds-tabs-nav {
+  display: flex;
+  position: relative;
+  
+  // Make tabs stretch to fill the container
+  &--stretch {
+    .ds-tab-button {
+      flex: 1;
+    }
+  }
+  
+  // Filled tabs style
+  &--filled {
+    background-color: var(--tabs-bg);
+    border-radius: var(--border-radius-md);
+    
+    .ds-tab-button {
+      border-radius: var(--border-radius-md);
+      margin: var(--spacing-1);
+      
+      &--active {
+        background-color: var(--tabs-active-bg);
+        color: var(--tabs-active-color);
+      }
+    }
+  }
+  
+  // Outlined tabs style
+  &--outlined {
+    background-color: transparent;
+    border: 1px solid var(--tabs-border-color);
+    border-radius: var(--border-radius-md);
+    
+    .ds-tab-button {
+      border-radius: var(--border-radius-md);
+      margin: var(--spacing-1);
+      
+      &--active {
+        background-color: var(--tabs-active-bg);
+        color: var(--tabs-active-color);
+      }
+    }
+  }
+  
+  // Minimal tabs style
+  &--minimal {
+    background-color: transparent;
+    
+    .ds-tab-button {
+      border-radius: 0;
+      margin: 0;
+      margin-right: var(--spacing-4);
+      padding: var(--spacing-2) 0;
+      
+      &:last-child {
+        margin-right: 0;
+      }
+      
+      &--active {
+        color: var(--tabs-active-color);
+      }
+    }
+  }
+}
+
+// Individual tab button styles
+.ds-tab-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2) var(--spacing-4);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--tabs-color);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  user-select: none;
+  white-space: nowrap;
+  outline: none;
+  
+  &:hover:not(.ds-tab-button--disabled) {
+    color: var(--tabs-hover-color);
+    background-color: var(--tabs-hover-bg);
+  }
+  
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    z-index: 1;
+  }
+  
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  // Icon in tab button
+  &-icon {
+    margin-right: var(--spacing-2);
+    font-size: 18px;
+  }
+  
+  // Badge in tab button
+  &-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 var(--spacing-1);
+    margin-left: var(--spacing-2);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    line-height: 1;
+    border-radius: 10px;
+    color: var(--badge-text);
+    background-color: var(--badge-bg);
+  }
+}
+
+// Tab content styles
+.ds-tabs-content {
+  flex: 1;
+  position: relative;
+  padding: var(--spacing-4);
+  overflow: auto;
+  
+  &--animated {
+    ::ng-deep .ds-tab-content {
+      &--active {
+        animation: tab-fade-in var(--transition-duration-normal) var(--transition-timing-function);
+      }
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes tab-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

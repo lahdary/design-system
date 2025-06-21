@@ -1,16 +1,42 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "moduleResolution": "bundler",
-    "emitDecoratorMetadata": false,
-    "target": "es2022",
-    "module": "preserve",
-    "lib": ["es2020", "dom"],
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@design-system/ui": ["libs/ui/src/index.ts"]
+      "@design-system/ui": [
+        "libs/ui/src/index.ts"
+      ],
+      "@design-system/ui/*": [
+        "libs/ui/src/*"
+      ],
+      "@design-system/ui/components/*": [
+        "libs/ui/src/lib/components/*"
+      ],
+      "@design-system/ui/tokens": [
+        "libs/ui/src/lib/tokens/index.ts"
+      ],
+      "@design-system/ui/styles": [
+        "libs/ui/src/lib/styles/index.scss"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

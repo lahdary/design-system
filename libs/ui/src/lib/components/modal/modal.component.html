@@ -1,0 +1,49 @@
+<!-- Modal backdrop and container with dynamic backdrop style -->
+<div 
+  *ngIf="open" 
+  class="ds-modal-backdrop" 
+  [class.ds-modal-backdrop--dimmed]="backdropType() === 'dimmed'" 
+  [class.ds-modal-backdrop--blur]="backdropType() === 'blur'" 
+  [class.ds-modal-backdrop--none]="backdropType() === 'none'" 
+  (click)="onBackdropClick($event)"
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-labelledby]="title() ? 'modal-title' : null"
+>
+  <!-- Modal content container with dynamic size classes -->
+  <div 
+    class="ds-modal" 
+    [class.ds-modal--sm]="size() === 'sm'" 
+    [class.ds-modal--md]="size() === 'md'" 
+    [class.ds-modal--lg]="size() === 'lg'" 
+    [class.ds-modal--full]="size() === 'full'"
+    (click)="$event.stopPropagation()"
+  >
+    <!-- Modal header with title and optional close button -->
+    <div class="ds-modal-header" *ngIf="title() || showCloseButton()">
+      <h2 *ngIf="title()" class="ds-modal-title" id="modal-title">{{title()}}</h2>
+      <button 
+        *ngIf="showCloseButton()" 
+        type="button" 
+        class="ds-modal-close-btn" 
+        aria-label="Close modal"
+        (click)="close()"
+      >
+        <span class="material-icons">close</span>
+      </button>
+    </div>
+    
+    <!-- Modal body with content -->
+    <div 
+      class="ds-modal-content"
+      [class.ds-modal-content--padded]="contentPadding()"
+    >
+      <ng-content></ng-content>
+    </div>
+    
+    <!-- Modal footer - always rendered, NgContent will be empty if no footer provided -->
+    <div class="ds-modal-footer">
+      <ng-content select="[slot=footer]"></ng-content>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,158 @@
+@use 'mixins' as *;
+
+.ds-toggle-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    
+    .ds-toggle-label {
+      cursor: not-allowed;
+    }
+  }
+}
+
+.ds-toggle {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  &:focus-within {
+    .ds-toggle-track {
+      box-shadow: var(--focus-ring);
+    }
+  }
+  
+  &--sm {
+    .ds-toggle-track {
+      width: 32px;
+      height: 16px;
+    }
+    
+    .ds-toggle-thumb {
+      width: 12px;
+      height: 12px;
+    }
+    
+    &.ds-toggle--checked .ds-toggle-thumb {
+      transform: translateX(16px);
+    }
+  }
+  
+  &--md {
+    .ds-toggle-track {
+      width: 40px;
+      height: 20px;
+    }
+    
+    .ds-toggle-thumb {
+      width: 16px;
+      height: 16px;
+    }
+    
+    &.ds-toggle--checked .ds-toggle-thumb {
+      transform: translateX(20px);
+    }
+  }
+  
+  &--lg {
+    .ds-toggle-track {
+      width: 48px;
+      height: 24px;
+    }
+    
+    .ds-toggle-thumb {
+      width: 20px;
+      height: 20px;
+    }
+    
+    &.ds-toggle--checked .ds-toggle-thumb {
+      transform: translateX(24px);
+    }
+  }
+}
+
+.ds-toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.ds-toggle-track {
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 999px;
+  background-color: var(--toggle-track-bg);
+  transition: all var(--transition-normal);
+  
+  .ds-toggle--checked & {
+    background-color: var(--toggle-track-bg-checked);
+  }
+}
+
+.ds-toggle-thumb {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--toggle-thumb-bg);
+  transition: transform var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+  transform: translateX(0);
+}
+
+.ds-toggle-label {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ds-toggle-required-indicator {
+  color: var(--color-error);
+  margin-left: var(--spacing-1);
+}
+
+.ds-toggle-spinner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  svg {
+    width: 80%;
+    height: 80%;
+    animation: toggle-spin 1s linear infinite;
+  }
+  
+  .ds-toggle-spinner-circle {
+    stroke: var(--toggle-spinner-color);
+    stroke-dasharray: 80;
+    stroke-dashoffset: 60;
+    transform-origin: center;
+  }
+}
+
+@keyframes toggle-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

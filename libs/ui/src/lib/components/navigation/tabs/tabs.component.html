@@ -1,0 +1,44 @@
+<div 
+  class="ds-tabs"
+  [class.ds-tabs--vertical]="orientation() === 'vertical'"
+  [class.ds-tabs--horizontal]="orientation() === 'horizontal'"
+  [class.ds-tabs--bottom]="orientation() === 'horizontal' && position() === 'bottom'"
+>
+  <!-- Tab navigation -->
+  <div 
+    class="ds-tabs-nav"
+    [class.ds-tabs-nav--filled]="appearance() === 'filled'"
+    [class.ds-tabs-nav--outlined]="appearance() === 'outlined'"
+    [class.ds-tabs-nav--minimal]="appearance() === 'minimal'"
+    [class.ds-tabs-nav--stretch]="stretch()"
+    role="tablist"
+    [attr.aria-orientation]="orientation()"
+  >
+    <button 
+      *ngFor="let tab of tabItems; let i = index" 
+      class="ds-tab-button"
+      [class.ds-tab-button--active]="tab.active()"
+      [class.ds-tab-button--disabled]="tab.disabled()"
+      [disabled]="tab.disabled()"
+      (click)="selectTab(i)"
+      role="tab"
+      [attr.aria-selected]="tab.active()"
+      [attr.aria-disabled]="tab.disabled()"
+      [attr.aria-controls]="tab.id"
+    >
+      <span *ngIf="tab.icon()" class="ds-tab-button-icon material-icons">{{ tab.icon() }}</span>
+      <span class="ds-tab-button-text">{{ tab.title() }}</span>
+      <span *ngIf="tab.badge() !== ''" class="ds-tab-button-badge">{{ tab.badge() }}</span>
+    </button>
+    <div class="ds-tab-indicator"></div>
+  </div>
+  
+  <!-- Tab content -->
+  <div 
+    class="ds-tabs-content"
+    [class.ds-tabs-content--animated]="animated()"
+    [dsTabAnimation]="animated()"
+  >
+    <ng-content></ng-content>
+  </div>
+</div>
