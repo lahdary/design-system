@@ -1,19 +1,26 @@
 /* Light theme variables */
 :root {
   /* Color system */
-  --color-primary: #2196f3;
-  --color-primary-light: #64b5f6;
-  --color-primary-dark: #1976d2;
-  --color-primary-hover: #1e88e5;
-  --color-primary-active: #1976d2;
-  --color-primary-disabled: rgba(33, 150, 243, 0.5);
+  --color-primary: #5c7cfa;
+  --color-primary-light: #91a7ff;
+  --color-primary-dark: #4263eb;
+  --color-primary-hover: #4c6ef5;
+  --color-primary-active: #3b5bdb;
+  --color-primary-disabled: rgba(92, 124, 250, 0.5);
   
-  --color-secondary: #e91e63;
-  --color-secondary-light: #f06292;
-  --color-secondary-dark: #c2185b;
-  --color-secondary-hover: #d81b60;
-  --color-secondary-active: #c2185b;
-  --color-secondary-disabled: rgba(233, 30, 99, 0.5);
+  --color-secondary: #f06595;
+  --color-secondary-light: #faa2c1;
+  --color-secondary-dark: #d6336c;
+  --color-secondary-hover: #e64980;
+  --color-secondary-active: #c2255c;
+  --color-secondary-disabled: rgba(240, 101, 149, 0.5);
+  
+  --color-tertiary: #fcc419;
+  --color-tertiary-light: #ffe066;
+  --color-tertiary-dark: #f59f00;
+  --color-tertiary-hover: #fab005;
+  --color-tertiary-active: #f08c00;
+  --color-tertiary-disabled: rgba(252, 196, 25, 0.5);
   
   /* Surface colors */
   --color-surface: #ffffff;

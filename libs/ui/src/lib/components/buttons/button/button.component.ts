@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, signal, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /**
@@ -42,53 +42,53 @@ export class ButtonComponent {
    * Button variant
    * @default 'primary'
    */
-  @Input() variant: ButtonVariant = 'primary';
-  
+  variant = input<ButtonVariant>('primary');
+
   /**
    * Button size
    * @default 'md'
    */
-  @Input() size: ButtonSize = 'md';
-  
+  size = input<ButtonSize>('md');
+
   /**
    * Whether the button is disabled
    * @default false
    */
-  @Input() disabled = false;
-  
+  disabled = input<boolean>(false);
+
   /**
    * Whether the button is in a loading state
    * @default false
    */
-  @Input() loading = false;
-  
+  loading = input<boolean>(false);
+
   /**
    * Whether the button should take full width of container
    * @default false
    */
-  @Input() fullWidth = false;
-  
+  fullWidth = input<boolean>(false);
+
   /**
    * ARIA label for the button
    */
-  @Input() ariaLabel?: string;
-  
+  ariaLabel = input<string>('');
+
   /**
    * Button type attribute
    * @default 'button'
    */
-  @Input() type: 'button' | 'submit' | 'reset' = 'button';
-  
+  type = input<'button' | 'submit' | 'reset'>('button');
+
   /**
    * Click event emitter
    */
-  @Output() clicked = new EventEmitter<MouseEvent>();
-  
+  clicked = output<MouseEvent>();
+
   /**
    * Signal that tracks whether the button is currently pressed
    */
   pressed = signal(false);
-  
+
   /**
    * Handles button click and emits the clicked event
    * @param event - Mouse event
@@ -98,14 +98,14 @@ export class ButtonComponent {
       this.clicked.emit(event);
     }
   }
-  
+
   /**
    * Handle mouse down event
    */
   onMouseDown(): void {
     this.pressed.set(true);
   }
-  
+
   /**
    * Handle mouse up event
    */

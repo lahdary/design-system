@@ -1,0 +1,33 @@
+<div 
+  *ngIf="visible()" 
+  class="ds-alert"
+  [class.ds-alert--info]="variant() === 'info'"
+  [class.ds-alert--success]="variant() === 'success'"
+  [class.ds-alert--warning]="variant() === 'warning'"
+  [class.ds-alert--error]="variant() === 'error'"
+  [class.ds-alert--bordered]="bordered()"
+  [class.ds-alert--solid]="solid()"
+  [class.ds-alert--elevated]="elevated()"
+  role="alert"
+>
+  <div class="ds-alert__content">
+    <span *ngIf="hasIcon()" class="ds-alert__icon material-icons">
+      {{ icon }}
+    </span>
+    <div class="ds-alert__text">
+      <div *ngIf="title()" class="ds-alert__title">{{ title() }}</div>
+      <div class="ds-alert__message">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+  <button 
+    *ngIf="dismissible()" 
+    class="ds-alert__close-btn"
+    aria-label="Close alert"
+    (click)="closeAlert()"
+    type="button"
+  >
+    <span class="material-icons">close</span>
+  </button>
+</div>

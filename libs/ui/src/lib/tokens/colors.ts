@@ -2,32 +2,46 @@
  * Color tokens for the design system
  */
 export const Colors = {
-  // Primary colors
+  // Primary colors - Creative and simple indigo palette
   primary: {
-    50: '#e3f2fd',
-    100: '#bbdefb',
-    200: '#90caf9',
-    300: '#64b5f6',
-    400: '#42a5f5',
-    500: '#2196f3', // Primary color
-    600: '#1e88e5',
-    700: '#1976d2',
-    800: '#1565c0',
-    900: '#0d47a1',
+    50: '#edf2ff',
+    100: '#dbe4ff',
+    200: '#bac8ff',
+    300: '#91a7ff',
+    400: '#748ffc',
+    500: '#5c7cfa', // Primary color - Creative blue with a hint of purple
+    600: '#4c6ef5',
+    700: '#4263eb',
+    800: '#3b5bdb',
+    900: '#364fc7',
   },
 
-  // Secondary colors
+  // Secondary colors - Soft coral palette that complements the primary
   secondary: {
-    50: '#fce4ec',
-    100: '#f8bbd0',
-    200: '#f48fb1',
-    300: '#f06292',
-    400: '#ec407a',
-    500: '#e91e63', // Secondary color
-    600: '#d81b60',
-    700: '#c2185b',
-    800: '#ad1457',
-    900: '#880e4f',
+    50: '#fff0f6',
+    100: '#ffdeeb',
+    200: '#fcc2d7',
+    300: '#faa2c1',
+    400: '#f783ac',
+    500: '#f06595', // Secondary color - Soft coral pink
+    600: '#e64980',
+    700: '#d6336c',
+    800: '#c2255c',
+    900: '#a61e4d',
+  },
+  
+  // Tertiary colors - Warm amber/gold palette
+  tertiary: {
+    50: '#fff9db',
+    100: '#fff3bf',
+    200: '#ffec99',
+    300: '#ffe066',
+    400: '#ffd43b',
+    500: '#fcc419', // Tertiary color - Warm amber
+    600: '#fab005',
+    700: '#f59f00',
+    800: '#f08c00',
+    900: '#e67700',
   },
 
   // Neutral colors

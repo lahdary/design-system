@@ -1,0 +1,17 @@
+<span 
+  class="ds-badge"
+  [class.ds-badge--primary]="variant() === 'primary'"
+  [class.ds-badge--secondary]="variant() === 'secondary'"
+  [class.ds-badge--success]="variant() === 'success'"
+  [class.ds-badge--warning]="variant() === 'warning'"
+  [class.ds-badge--error]="variant() === 'error'"
+  [class.ds-badge--info]="variant() === 'info'"
+  [class.ds-badge--sm]="size() === 'sm'"
+  [class.ds-badge--md]="size() === 'md'"
+  [class.ds-badge--lg]="size() === 'lg'"
+  [class.ds-badge--outline]="outline()"
+  [class.ds-badge--rounded]="rounded()"
+>
+  <span *ngIf="icon()" class="ds-badge__icon material-icons">{{ icon() }}</span>
+  <ng-content></ng-content>
+</span>

@@ -1,0 +1,19 @@
+<div class="ds-card" 
+     [class.ds-card--elevation-0]="elevation() === 0"
+     [class.ds-card--elevation-1]="elevation() === 1"
+     [class.ds-card--elevation-2]="elevation() === 2"
+     [class.ds-card--elevation-3]="elevation() === 3"
+     [class.ds-card--radius-none]="radius() === 'none'"
+     [class.ds-card--radius-sm]="radius() === 'sm'"
+     [class.ds-card--radius-md]="radius() === 'md'"
+     [class.ds-card--radius-lg]="radius() === 'lg'"
+     [class.ds-card--radius-full]="radius() === 'full'"
+     [class.ds-card--padding-none]="padding() === 'none'"
+     [class.ds-card--padding-sm]="padding() === 'sm'"
+     [class.ds-card--padding-md]="padding() === 'md'"
+     [class.ds-card--padding-lg]="padding() === 'lg'"
+     [class.ds-card--bordered]="bordered()"
+     [class.ds-card--interactive]="interactive()"
+     [class.ds-card--full-width]="fullWidth()">
+  <ng-content></ng-content>
+</div>

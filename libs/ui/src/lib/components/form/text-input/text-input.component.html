@@ -1,0 +1,45 @@
+<div [ngClass]="containerClass()">
+  <label 
+    *ngIf="label()"
+    [attr.for]="id()"
+    class="ds-text-input__label"
+  >
+    {{ label() }}
+    <span *ngIf="required()" class="ds-text-input__required-indicator">*</span>
+  </label>
+  
+  <div class="ds-text-input__input-wrapper">
+    <input
+      [id]="id()"
+      [type]="type()"
+      [placeholder]="placeholder()"
+      [disabled]="disabled()"
+      [readOnly]="readonly()"
+      [required]="required()"
+      [attr.aria-label]="ariaLabel() || label() || placeholder()"
+      [attr.aria-required]="required()"
+      [attr.aria-invalid]="hasError()"
+      [attr.aria-describedby]="(hasError() && errorMessage()) ? id() + '-error' : (helperText() ? id() + '-helper' : null)"
+      [attr.maxlength]="maxlength()"
+      [attr.minlength]="minlength()"
+      class="ds-text-input__input"
+      [ngModel]="value()"
+      (ngModelChange)="value.set($event)"
+      (focus)="onFocus($event)"
+      (blur)="onBlur($event)"
+      (input)="onInput($event)"
+    />
+  </div>
+  
+  <div *ngIf="helperText() && !hasError()" 
+    [id]="id() + '-helper'" 
+    class="ds-text-input__helper-text">
+    {{ helperText() }}
+  </div>
+  
+  <div *ngIf="hasError() && errorMessage()" 
+    [id]="id() + '-error'" 
+    class="ds-text-input__error-message">
+    {{ errorMessage() }}
+  </div>
+</div>

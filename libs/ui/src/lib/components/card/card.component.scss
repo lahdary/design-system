@@ -1,0 +1,119 @@
+@use 'mixins' as *;
+
+.ds-card {
+  display: block;
+  background-color: var(--color-surface);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  
+  // Elevation Variants
+  &--elevation-0 {
+    box-shadow: none;
+  }
+  
+  &--elevation-1 {
+    box-shadow: var(--shadow-sm);
+  }
+  
+  &--elevation-2 {
+    box-shadow: var(--shadow-md);
+  }
+  
+  &--elevation-3 {
+    box-shadow: var(--shadow-lg);
+  }
+  
+  // Border Radius Variants
+  &--radius-none {
+    border-radius: 0;
+  }
+  
+  &--radius-sm {
+    border-radius: var(--border-radius-sm);
+  }
+  
+  &--radius-md {
+    border-radius: var(--border-radius-md);
+  }
+  
+  &--radius-lg {
+    border-radius: var(--border-radius-lg);
+  }
+  
+  &--radius-full {
+    border-radius: var(--border-radius-full);
+  }
+  
+  // Padding Variants - Affects child element padding
+  &--padding-none {
+    ::ng-deep {
+      ds-ui-card-header, 
+      ds-ui-card-body, 
+      ds-ui-card-footer {
+        padding: 0;
+      }
+    }
+  }
+  
+  &--padding-sm {
+    ::ng-deep {
+      ds-ui-card-header, 
+      ds-ui-card-body, 
+      ds-ui-card-footer {
+        padding: var(--spacing-2);
+      }
+    }
+  }
+  
+  &--padding-md {
+    ::ng-deep {
+      ds-ui-card-header, 
+      ds-ui-card-body, 
+      ds-ui-card-footer {
+        padding: var(--spacing-4);
+      }
+    }
+  }
+  
+  &--padding-lg {
+    ::ng-deep {
+      ds-ui-card-header, 
+      ds-ui-card-body, 
+      ds-ui-card-footer {
+        padding: var(--spacing-6);
+      }
+    }
+  }
+  
+  // Bordered Variant
+  &--bordered {
+    border: 1px solid var(--color-border);
+  }
+  
+  // Interactive Variant
+  &--interactive {
+    cursor: pointer;
+    
+    &:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      box-shadow: var(--shadow-sm);
+      transform: translateY(0);
+    }
+  }
+  
+  // Full Width Variant
+  &--full-width {
+    width: 100%;
+  }
+}
+
+// Dark theme adjustments
+:host-context([data-theme="dark"]) {
+  .ds-card {
+    background-color: var(--color-surface);
+  }
+}

@@ -112,6 +112,9 @@
         "styles": [
           "libs/ui/src/lib/styles/index.scss"
         ],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/ui/src/lib/styles"]
+        },
         "configDir": "./.storybook",
         "browserTarget": "design-system:build-storybook",
         "compodoc": false
@@ -133,6 +136,9 @@
        "styles": [
           "libs/ui/src/lib/styles/index.scss"
         ],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/ui/src/lib/styles"]
+        },
         "browserTarget": "design-system:build-storybook",
         "compodoc": false
       },

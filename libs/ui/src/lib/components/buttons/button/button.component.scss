@@ -1,4 +1,4 @@
-@import '../../../styles/mixins';
+@use 'mixins' as *;
 
 .ds-button {
   position: relative;
@@ -101,18 +101,21 @@
   /* Tertiary variant */
   &--tertiary {
     background-color: transparent;
-    color: var(--color-text-primary);
+    color: var(--color-tertiary);
+    border: 1px solid transparent;
 
     &:hover:not(:disabled):not([aria-disabled="true"]) {
-      background-color: var(--color-surface-hover);
+      background-color: rgba(var(--color-tertiary-rgb), 0.1);
+      color: var(--color-tertiary-hover);
     }
 
     &:active:not(:disabled):not([aria-disabled="true"]) {
-      background-color: var(--color-surface-active);
+      background-color: rgba(var(--color-tertiary-rgb), 0.2);
+      color: var(--color-tertiary-active);
     }
 
     &:disabled, &[aria-disabled="true"] {
-      color: var(--color-text-disabled);
+      color: var(--color-tertiary-disabled);
     }
   }
 

@@ -1,8 +1,9 @@
 /* Variables shared across themes */
 :root {
   /* Color values in RGB format for opacity/alpha operations */
-  --color-primary-rgb: 33, 150, 243;
-  --color-secondary-rgb: 233, 30, 99;
+  --color-primary-rgb: 92, 124, 250;
+  --color-secondary-rgb: 240, 101, 149;
+  --color-tertiary-rgb: 252, 196, 25;
   --color-success-rgb: 76, 175, 80;
   --color-warning-rgb: 255, 152, 0;
   --color-error-rgb: 244, 67, 54;
@@ -19,8 +20,9 @@
 
 /* Dark theme overrides */
 [data-theme="dark"] {
-  --color-primary-rgb: 144, 202, 249;
-  --color-secondary-rgb: 244, 143, 177;
+  --color-primary-rgb: 186, 200, 255;
+  --color-secondary-rgb: 252, 194, 215;
+  --color-tertiary-rgb: 255, 236, 153;
   --color-success-rgb: 129, 199, 132;
   --color-warning-rgb: 255, 183, 77;
   --color-error-rgb: 229, 115, 115;

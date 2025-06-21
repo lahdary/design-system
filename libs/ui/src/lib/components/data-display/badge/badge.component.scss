@@ -1,0 +1,125 @@
+@use 'mixins' as *;
+
+.ds-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  border-radius: var(--border-radius-sm);
+  
+  // Size variants
+  &--sm {
+    font-size: var(--font-size-xs);
+    height: 18px;
+    padding: 0 var(--spacing-2);
+  }
+  
+  &--md {
+    font-size: var(--font-size-xs);
+    height: 22px;
+    padding: 0 var(--spacing-2-5);
+  }
+  
+  &--lg {
+    font-size: var(--font-size-sm);
+    height: 26px;
+    padding: 0 var(--spacing-3);
+  }
+
+  // Default (primary)
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  
+  // Variants
+  &--primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    
+    &.ds-badge--outline {
+      background-color: transparent;
+      border: 1px solid var(--color-primary);
+      color: var(--color-primary);
+    }
+  }
+  
+  &--secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    
+    &.ds-badge--outline {
+      background-color: transparent;
+      border: 1px solid var(--color-secondary);
+      color: var(--color-secondary);
+    }
+  }
+  
+  &--success {
+    background-color: var(--color-success);
+    color: var(--color-white);
+    
+    &.ds-badge--outline {
+      background-color: transparent;
+      border: 1px solid var(--color-success);
+      color: var(--color-success);
+    }
+  }
+  
+  &--warning {
+    background-color: var(--color-warning);
+    color: var(--color-white);
+    
+    &.ds-badge--outline {
+      background-color: transparent;
+      border: 1px solid var(--color-warning);
+      color: var(--color-warning);
+    }
+  }
+  
+  &--error {
+    background-color: var(--color-error);
+    color: var(--color-white);
+    
+    &.ds-badge--outline {
+      background-color: transparent;
+      border: 1px solid var(--color-error);
+      color: var(--color-error);
+    }
+  }
+  
+  &--info {
+    background-color: var(--color-info);
+    color: var(--color-white);
+    
+    &.ds-badge--outline {
+      background-color: transparent;
+      border: 1px solid var(--color-info);
+      color: var(--color-info);
+    }
+  }
+  
+  // Rounded variant (pill-shaped)
+  &--rounded {
+    border-radius: 100px;
+  }
+  
+  // Icon
+  &__icon {
+    font-size: 14px;
+    margin-right: var(--spacing-1);
+  }
+  
+  // When icon and md/lg sizes
+  &--md &__icon {
+    font-size: 14px;
+  }
+  
+  &--lg &__icon {
+    font-size: 16px;
+  }
+  
+  &--sm &__icon {
+    font-size: 12px;
+  }
+}
