@@ -190,12 +190,12 @@ Each component must include:
 - [x] Create usage documentation for all components
 - [x] Perform accessibility checks and create accessibility guidelines
 
-### Step 7: Modal / Dialog Component (Planned)
+### Step 7: Modal / Dialog Component (Completed)
 
-- [ ] Create Modal / Dialog component structure
-- [ ] Implement theming and variations
-- [ ] Add accessibility features
-- [ ] Create Storybook documentation
+- [x] Create Modal / Dialog component structure
+- [x] Implement theming and variations
+- [x] Add accessibility features
+- [x] Create Storybook documentation
 
 ### Step 8: Tabs Component (Planned)
 
@@ -204,19 +204,19 @@ Each component must include:
 - [ ] Add accessibility features
 - [ ] Create Storybook documentation
 
-### Step 9: Toggle / Switch Component (Planned)
+### Step 9: Toggle / Switch Component (In Progress)
 
 - [ ] Create Toggle / Switch component structure
 - [ ] Implement theming and variations
 - [ ] Add accessibility features
 - [ ] Create Storybook documentation
 
-### Step 10: Dropdown / Select Component (Proposed)
+### Step 10: Dropdown / Select Component (Completed)
 
-- [ ] Create Dropdown / Select component structure
-- [ ] Implement theming and variations
-- [ ] Add accessibility features
-- [ ] Create Storybook documentation
+- [x] Create Dropdown / Select component structure
+- [x] Implement theming and variations
+- [x] Add accessibility features
+- [x] Create Storybook documentation
 
 ### Step 11: Pagination Component (Proposed)
 
@@ -227,10 +227,24 @@ Each component must include:
 
 ### Step 12: Table / Data Grid Component (Proposed)
 
-- [ ] Create Table / Data Grid component structure
-- [ ] Implement theming and variations
-- [ ] Add accessibility features
-- [ ] Create Storybook documentation
+#### MVP Requirements:
+
+- [ ] Create a directive-first approach with ds-table and ds-table-\* directives for native HTML table elements
+- [ ] Implement basic table structure with directives for table, header, row, and cell elements
+- [ ] Focus on a lightweight, flexible implementation that enhances native HTML tables
+- [ ] Provide basic sorting functionality through a sortable column directive
+- [ ] Create a minimal set of styling options with CSS variables for theming
+- [ ] Implement core accessibility features (proper ARIA roles, keyboard navigation)
+- [ ] Add comprehensive Storybook documentation with usage examples
+
+#### Future Enhancements (Post-MVP):
+
+- [ ] Add pagination integration
+- [ ] Implement row selection functionality
+- [ ] Create advanced sorting and filtering capabilities
+- [ ] Add support for expandable rows
+- [ ] Implement sticky headers and columns
+- [ ] Create mobile responsive behaviors and adaptations
 
 ### Step 13: Avatar / User Profile Component (Proposed)
 
@@ -349,39 +363,6 @@ Each component must include:
   - [ ] Add sparkline mini-charts
   - [ ] Create comparison visualizations
   - [ ] Add responsive behaviors
-
-### Step 27: Component Architecture Migration (New)
-
-- [ ] Migrate Text Input component to feature-first structure
-
-  - [ ] Create feature folder with types, component and directive
-  - [ ] Share types between implementations
-  - [ ] Update tests and stories
-  - [ ] Maintain backward compatibility
-
-- [ ] Migrate Card component to feature-first structure
-
-  - [ ] Create feature folder with types and component
-  - [ ] Update tests and stories
-  - [ ] Maintain backward compatibility
-
-- [ ] Migrate Alert component to feature-first structure
-
-  - [ ] Create feature folder with types and component
-  - [ ] Update tests and stories
-  - [ ] Maintain backward compatibility
-
-- [ ] Migrate Badge component to feature-first structure
-  - [ ] Create feature folder with types and component
-  - [ ] Update tests and stories
-  - [ ] Maintain backward compatibility
-
-### Step 28: Directive Implementation (New)
-
-- [ ] Create Text Input directive for native input elements
-- [ ] Create Alert directive for custom notifications
-- [ ] Create Badge directive for adding badges to existing elements
-- [ ] Update documentation and examples for directive usage
 
 ---
 

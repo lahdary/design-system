@@ -1,0 +1,214 @@
+/* Table component styles */
+
+.ds-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-family);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+
+  /* Size variations */
+  &--sm {
+    font-size: var(--font-size-sm);
+    
+    .ds-table__header-cell,
+    .ds-table__cell {
+      padding: var(--spacing-xs) var(--spacing-sm);
+    }
+  }
+
+  &--md {
+    font-size: var(--font-size-base);
+    
+    .ds-table__header-cell,
+    .ds-table__cell {
+      padding: var(--spacing-sm) var(--spacing-md);
+    }
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+    
+    .ds-table__header-cell,
+    .ds-table__cell {
+      padding: var(--spacing-md) var(--spacing-lg);
+    }
+  }
+
+  /* Density variations */
+  &--compact {
+    .ds-table__cell {
+      padding-top: var(--spacing-xs);
+      padding-bottom: var(--spacing-xs);
+    }
+  }
+
+  &--spacious {
+    .ds-table__cell {
+      padding-top: var(--spacing-md);
+      padding-bottom: var(--spacing-md);
+    }
+  }
+
+  /* Border styles */
+  &--border-none {
+    .ds-table__header-cell,
+    .ds-table__cell {
+      border: none;
+    }
+  }
+
+  &--border-horizontal {
+    .ds-table__header {
+      border-bottom: 2px solid var(--color-border);
+    }
+    
+    .ds-table__row:not(:last-child) .ds-table__cell {
+      border-bottom: 1px solid var(--color-border-light);
+    }
+  }
+
+  &--border-vertical {
+    .ds-table__header-cell:not(:last-child),
+    .ds-table__cell:not(:last-child) {
+      border-right: 1px solid var(--color-border-light);
+    }
+  }
+
+  &--border-all {
+    border: 1px solid var(--color-border);
+    
+    .ds-table__header-cell,
+    .ds-table__cell {
+      border: 1px solid var(--color-border-light);
+    }
+  }
+
+  /* Striped rows */
+  &--striped .ds-table__body .ds-table__row:nth-child(odd) {
+    background-color: var(--color-bg-subtle);
+  }
+
+  /* Hover effect */
+  &--hover .ds-table__body .ds-table__row:hover {
+    background-color: var(--color-surface-hover);
+  }
+}
+
+.ds-table__header {
+  background-color: var(--color-bg-header);
+}
+
+.ds-table__header-cell {
+  font-weight: var(--font-weight-bold);
+  text-align: left;
+  user-select: none;
+  transition: background-color 0.2s;
+  position: relative;
+  
+  &--left {
+    text-align: left;
+  }
+  
+  &--center {
+    text-align: center;
+  }
+  
+  &--right {
+    text-align: right;
+  }
+
+  /* Sortable header styling */
+  &--sortable {
+    cursor: pointer;
+    padding-right: 1.5rem; /* Make space for sort icon */
+    
+    &:hover {
+      background-color: var(--color-surface-hover);
+    }
+  }
+  
+  &--sorted-asc,
+  &--sorted-desc {
+    background-color: var(--color-surface-hover);
+    
+    .ds-table__sort-indicator {
+      opacity: 1;
+    }
+  }
+}
+
+.ds-table__sort-indicator {
+  display: inline-block;
+  width: 0.6rem;
+  height: 1.2rem;
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* Up arrow */
+  &::before {
+    top: 0;
+    border-left: 0.3rem solid transparent;
+    border-right: 0.3rem solid transparent;
+    border-bottom: 0.3rem solid currentColor;
+  }
+  
+  /* Down arrow */
+  &::after {
+    bottom: 0;
+    border-left: 0.3rem solid transparent;
+    border-right: 0.3rem solid transparent;
+    border-top: 0.3rem solid currentColor;
+  }
+  
+  .ds-table__header-cell--sorted-asc &::before {
+    border-bottom-color: var(--color-primary);
+  }
+  
+  .ds-table__header-cell--sorted-desc &::after {
+    border-top-color: var(--color-primary);
+  }
+}
+
+.ds-table__cell {
+  &--left {
+    text-align: left;
+  }
+  
+  &--center {
+    text-align: center;
+  }
+  
+  &--right {
+    text-align: right;
+  }
+}
+
+/* Responsive tables - enable horizontal scrolling for small screens */
+@media (max-width: 768px) {
+  .ds-table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 1rem;
+    
+    .ds-table {
+      margin-bottom: 0;
+    }
+  }
+}
