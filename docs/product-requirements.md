@@ -1,9 +1,10 @@
 # MVP Product Requirements Document (PRD)
+
 # Angular Design System
 
 **Version:** 0.1.0  
 **Date:** June 21, 2025  
-**Status:** MVP Draft  
+**Status:** MVP Draft
 
 ## 1. Introduction
 
@@ -20,22 +21,32 @@ This simplified PRD focuses on the MVP (Minimum Viable Product) version of our A
 ## 3. MVP Components
 
 ### Phase 1: Foundation (Completed)
+
 - Design tokens (colors, typography, spacing)
 - Theme implementation (light/dark)
-- Button component (primary, secondary, tertiary variants)
+- Button component
+  - Component implementation (primary, secondary, tertiary variants)
+  - Directive implementation for native button elements
+  - Feature-first folder structure
+  - Shared types between component and directive
+  - Signal-based reactive inputs and outputs
+  - Comprehensive Storybook documentation
 
 ### Phase 2: Core Components (Completed)
+
 - Text Input
 - Card
 - Alert
 - Badge
 
 ### Phase 3: Interactive & Navigation Components (Planned)
+
 - Modal / Dialog component
 - Tabs component
 - Toggle / Switch component
 
 ### Phase 4: Advanced UI Components (Planned)
+
 - Dropdown / Select Component
 - Pagination Component
 - Table / Data Grid Component
@@ -43,21 +54,25 @@ This simplified PRD focuses on the MVP (Minimum Viable Product) version of our A
 - Tooltip Component
 
 ### Phase 5: Layout & Structural Components (Proposed)
+
 - Grid System Component
 - Accordion Component
 - Stepper Component
 
 ### Phase 6: Specialized UI Components (Proposed)
+
 - Date Picker Component
 - File Upload Component
 - Slider Component
 
 ### Phase 7: Advanced Form Controls (Proposed)
+
 - Rich Text Editor Component
 - Tag Input Component
 - Auto-complete Component
 
 ### Phase 8: Data Visualization Components (New)
+
 - Chart Component
 - Progress Indicators
 - Metrics & KPI Display
@@ -65,6 +80,7 @@ This simplified PRD focuses on the MVP (Minimum Viable Product) version of our A
 These components will enable effective data visualization and progress tracking:
 
 1. **Chart Component**
+
    - Multiple chart types (line, bar, pie, area)
    - Responsive sizing
    - Interactive tooltips
@@ -75,6 +91,7 @@ These components will enable effective data visualization and progress tracking:
    - Data loading states
 
 2. **Progress Indicators**
+
    - Linear progress bars
    - Circular progress
    - Step progress
@@ -95,6 +112,7 @@ These components will enable effective data visualization and progress tracking:
 ## 3. Component Requirements
 
 Each component must include:
+
 - TypeScript file with OnPush change detection
 - HTML template with accessibility attributes
 - SCSS styling with theme variables
@@ -107,90 +125,129 @@ Each component must include:
 - Accessible (WCAG 2.1 AA compliant)
 - Responsive design
 
+## 5. Architectural Improvements
 
+### Component Architecture (In Progress)
 
-## 5. Implementation Plan
+- [x] Feature-first folder structure (implemented for Button)
+  - Co-located component, directive, types, and stories
+  - Shared types between component and directive implementations
+  - Better organization and maintenance
+- [ ] Migrate remaining components to feature-first structure
+- [ ] Develop consistent pattern for component / directive pairs
 
-### Step 1: Foundation (Completed)
+### Directive Strategy (In Progress)
+
+- [x] Create directives for native HTML elements (implemented for Button)
+- [ ] Apply directive strategy to other components where applicable
+- [ ] Document best practices for component vs directive usage
+
+### Signal-based Reactivity (In Progress)
+
+- [x] Use Angular's signal-based input/output for reactive state (implemented for Button)
+- [ ] Apply signal-based patterns across all components
+- [ ] Create utility functions for common signal operations
+
+## 6. Implementation Plan
+
+### Step 1: Foundation and Architecture (Completed)
+
 - [x] Set up design tokens (colors, typography, spacing)
 - [x] Create theme system (light/dark)
 - [x] Complete Button component with variants
-- [x] Create Storybook documentation for Button
+- [x] Create Button directive for native HTML elements
+- [x] Implement feature-first folder structure for Button
+- [x] Create comprehensive test suite for Button component and directive
+- [x] Create Storybook documentation for Button components and directives
 
 ### Step 2: Text Input Component (Completed)
+
 - [x] Create Text Input component structure
 - [x] Implement styling and states
 - [x] Add accessibility features
 - [x] Create Storybook documentation
 
 ### Step 3: Card Component (Completed)
+
 - [x] Create Card component structure
 - [x] Implement theming and variations
 - [x] Create Storybook documentation
 
 ### Step 4: Alert Component (Completed)
+
 - [x] Create Alert component with variants
 - [x] Implement animations
 - [x] Create Storybook documentation
 
 ### Step 5: Badge Component (Completed)
+
 - [x] Create Badge component with variants
 - [x] Create Storybook documentation
 
 ### Step 6: Testing & Documentation (Completed)
+
 - [x] Ensure all components have basic tests using Jest
 - [x] Create usage documentation for all components
 - [x] Perform accessibility checks and create accessibility guidelines
 
 ### Step 7: Modal / Dialog Component (Planned)
+
 - [ ] Create Modal / Dialog component structure
 - [ ] Implement theming and variations
 - [ ] Add accessibility features
 - [ ] Create Storybook documentation
 
 ### Step 8: Tabs Component (Planned)
+
 - [ ] Create Tabs component structure
 - [ ] Implement theming and variations
 - [ ] Add accessibility features
 - [ ] Create Storybook documentation
 
 ### Step 9: Toggle / Switch Component (Planned)
+
 - [ ] Create Toggle / Switch component structure
 - [ ] Implement theming and variations
 - [ ] Add accessibility features
 - [ ] Create Storybook documentation
 
 ### Step 10: Dropdown / Select Component (Proposed)
+
 - [ ] Create Dropdown / Select component structure
 - [ ] Implement theming and variations
 - [ ] Add accessibility features
 - [ ] Create Storybook documentation
 
 ### Step 11: Pagination Component (Proposed)
+
 - [ ] Create Pagination component structure
 - [ ] Implement theming and variations
 - [ ] Add accessibility features
 - [ ] Create Storybook documentation
 
 ### Step 12: Table / Data Grid Component (Proposed)
+
 - [ ] Create Table / Data Grid component structure
 - [ ] Implement theming and variations
 - [ ] Add accessibility features
 - [ ] Create Storybook documentation
 
 ### Step 13: Avatar / User Profile Component (Proposed)
+
 - [ ] Create Avatar / User Profile component structure
 - [ ] Implement theming and variations
 - [ ] Add accessibility features
 - [ ] Create Storybook documentation
 
 ### Step 14: Tooltip Component (Proposed)
+
 - [ ] Create Tooltip component structure
 - [ ] Implement theming and variations
 - [ ] Add accessibility features
 - [ ] Create Storybook documentation
 
 ### Step 15: Grid System Component (Proposed)
+
 - [ ] Create Grid System component
   - [ ] Implement row and column structure
   - [ ] Add responsive breakpoints
@@ -198,6 +255,7 @@ Each component must include:
   - [ ] Create comprehensive examples
 
 ### Step 16: Accordion Component (Proposed)
+
 - [ ] Create Accordion component
   - [ ] Implement collapsible sections
   - [ ] Add animation and transitions
@@ -205,6 +263,7 @@ Each component must include:
   - [ ] Create stories with various configurations
 
 ### Step 17: Stepper Component (Proposed)
+
 - [ ] Create Stepper component
   - [ ] Implement step navigation logic
   - [ ] Create step indicator visuals
@@ -212,6 +271,7 @@ Each component must include:
   - [ ] Build mobile responsive behavior
 
 ### Step 18: Date Picker Component (Proposed)
+
 - [ ] Create Date Picker component
   - [ ] Implement calendar navigation
   - [ ] Add date selection logic
@@ -220,6 +280,7 @@ Each component must include:
   - [ ] Create mobile-responsive design
 
 ### Step 19: File Upload Component (Proposed)
+
 - [ ] Create File Upload component
   - [ ] Implement drag and drop functionality
   - [ ] Add file validation
@@ -228,6 +289,7 @@ Each component must include:
   - [ ] Add preview capabilities
 
 ### Step 20: Slider Component (Proposed)
+
 - [ ] Create Slider component
   - [ ] Implement value selection logic
   - [ ] Add range selection support
@@ -235,6 +297,7 @@ Each component must include:
   - [ ] Add touch and keyboard support
 
 ### Step 21: Rich Text Editor Component (Proposed)
+
 - [ ] Create Rich Text Editor component
   - [ ] Implement basic text formatting
   - [ ] Add list management
@@ -243,6 +306,7 @@ Each component must include:
   - [ ] Add accessibility features
 
 ### Step 22: Tag Input Component (Proposed)
+
 - [ ] Create Tag Input component
   - [ ] Implement tag creation and deletion
   - [ ] Add validation capabilities
@@ -251,6 +315,7 @@ Each component must include:
   - [ ] Add drag and drop reordering
 
 ### Step 23: Auto-complete Component (Proposed)
+
 - [ ] Create Auto-complete component
   - [ ] Implement suggestion logic
   - [ ] Add keyboard navigation
@@ -259,6 +324,7 @@ Each component must include:
   - [ ] Implement mobile-friendly behavior
 
 ### Step 24: Chart Component (New)
+
 - [ ] Create Chart component
   - [ ] Implement core chart rendering engine
   - [ ] Add support for multiple chart types
@@ -267,6 +333,7 @@ Each component must include:
   - [ ] Implement accessibility features
 
 ### Step 25: Progress Indicators Components (New)
+
 - [ ] Create Progress Indicators components
   - [ ] Implement linear progress bars
   - [ ] Create circular progress component
@@ -275,12 +342,46 @@ Each component must include:
   - [ ] Add theme integration
 
 ### Step 26: Metrics & KPI Display Components (New)
+
 - [ ] Create Metrics & KPI Display components
   - [ ] Design stat card layouts
   - [ ] Implement trend indicators
   - [ ] Add sparkline mini-charts
   - [ ] Create comparison visualizations
   - [ ] Add responsive behaviors
+
+### Step 27: Component Architecture Migration (New)
+
+- [ ] Migrate Text Input component to feature-first structure
+
+  - [ ] Create feature folder with types, component and directive
+  - [ ] Share types between implementations
+  - [ ] Update tests and stories
+  - [ ] Maintain backward compatibility
+
+- [ ] Migrate Card component to feature-first structure
+
+  - [ ] Create feature folder with types and component
+  - [ ] Update tests and stories
+  - [ ] Maintain backward compatibility
+
+- [ ] Migrate Alert component to feature-first structure
+
+  - [ ] Create feature folder with types and component
+  - [ ] Update tests and stories
+  - [ ] Maintain backward compatibility
+
+- [ ] Migrate Badge component to feature-first structure
+  - [ ] Create feature folder with types and component
+  - [ ] Update tests and stories
+  - [ ] Maintain backward compatibility
+
+### Step 28: Directive Implementation (New)
+
+- [ ] Create Text Input directive for native input elements
+- [ ] Create Alert directive for custom notifications
+- [ ] Create Badge directive for adding badges to existing elements
+- [ ] Update documentation and examples for directive usage
 
 ---
 
