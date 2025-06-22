@@ -1,4 +1,8 @@
+import { CommonModule } from '@angular/common';
+import { ButtonComponent } from '@design-system/ui/lib/components/buttons/button';
 import type { Preview } from '@storybook/angular';
+import { moduleMetadata } from '@storybook/angular';
+
 // import './preview.css';
 const preview: Preview = {
   parameters: {
@@ -36,19 +40,28 @@ const preview: Preview = {
     },
   },
   decorators: [
+    moduleMetadata({
+      imports: [
+        CommonModule, // Import CommonModule for Angular directives
+        ButtonComponent,
+        // Import any global modules or components here
+        // For example, if you have a shared module:
+        // SharedModule,
+      ],
+    }),
     (Story, context) => {
       const { theme } = context.globals;
-      
+
       // Set theme data attribute for CSS variables
       if (theme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
       } else {
         document.documentElement.removeAttribute('data-theme');
       }
-      
+
       // Also add theme class to the body for legacy support
       document.body.className = `theme-${theme}`;
-      
+
       return Story();
     },
   ],

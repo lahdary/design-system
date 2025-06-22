@@ -1,5 +1,11 @@
-import { Component, Input, ChangeDetectionStrategy, signal, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+  signal,
+} from '@angular/core';
 
 /**
  * Button variants
@@ -19,9 +25,9 @@ export type ButtonSize = 'sm' | 'md' | 'lg';
 
 /**
  * Button component
- * 
+ *
  * A versatile button component that supports different variants, sizes, and states.
- * 
+ *
  * @example
  * ```html
  * <ds-button variant="primary" size="md">Click Me</ds-button>
@@ -35,7 +41,7 @@ export type ButtonSize = 'sm' | 'md' | 'lg';
   imports: [CommonModule],
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
   /**
@@ -94,7 +100,7 @@ export class ButtonComponent {
    * @param event - Mouse event
    */
   onClick(event: MouseEvent): void {
-    if (!this.disabled && !this.loading) {
+    if (!this.disabled() && !this.loading()) {
       this.clicked.emit(event);
     }
   }

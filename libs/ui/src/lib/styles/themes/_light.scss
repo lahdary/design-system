@@ -116,4 +116,32 @@
   
   /* Focus ring */
   --focus-ring: 0 0 0 3px rgba(33, 150, 243, 0.4);
+  
+  /* Component-specific variables */
+  
+  /* Modal */
+  --modal-backdrop-color: rgba(0, 0, 0, 0.5);
+  --color-backdrop-rgb: 0, 0, 0;
+  --modal-bg: var(--color-surface);
+  --modal-border-color: var(--color-border);
+  --color-gray-100: #f5f5f5;
+  --transition-duration-fast: 150ms;
+  --transition-duration-normal: 250ms;
+  --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Tabs */
+  --tabs-border-color: var(--color-border);
+  --tabs-indicator-color: var(--color-primary);
+  --tabs-bg: var(--color-background-subtle);
+  --tabs-active-bg: var(--color-primary);
+  --tabs-active-color: var(--color-white);
+  
+  /* Toggle */
+  --toggle-track-bg: #c4c4c4;
+  --toggle-track-bg-checked: var(--color-primary);
+  --toggle-thumb-bg: #ffffff;
+  --toggle-spinner-color: var(--color-primary);
+  
+  /* Button */
+  --color-primary-rgb: 92, 124, 250;
 }

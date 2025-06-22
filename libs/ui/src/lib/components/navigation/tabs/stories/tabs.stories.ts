@@ -1,11 +1,16 @@
-import { Meta, StoryObj } from '@storybook/angular';
-import { TabsComponent } from '../tabs.component';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { TabItemComponent } from '../tab-item.component';
+import { TabsComponent } from '../tabs.component';
 
 const meta: Meta<TabsComponent> = {
   title: 'Components/Navigation/Tabs',
   component: TabsComponent,
   tags: ['autodocs'],
+  decorators: [
+    moduleMetadata({
+      imports: [TabsComponent, TabItemComponent],
+    }),
+  ],
   argTypes: {
     activeIndex: {
       control: { type: 'number', min: 0 },
