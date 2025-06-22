@@ -1,10 +1,10 @@
 /* Main styles for the design system */
 
 // Import themes
-@use './themes/light' as *;
-@use './themes/dark' as *;
-@use './mixins' as *;
-@use './variables' as *;
+@use 'themes/light' as *;
+@use 'themes/dark' as *;
+@use 'mixins' as *;
+@use 'variables' as *;
 
 // Global reset and base styles
 *, *::before, *::after {

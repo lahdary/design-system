@@ -1,5 +1,9 @@
+// Button component styles
+// This file contains all styles for the button component and directive
+
 @use 'mixins' as *;
 
+// Base button styles
 .ds-button {
   position: relative;
   display: inline-flex;

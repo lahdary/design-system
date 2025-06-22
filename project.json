@@ -15,6 +15,11 @@
       "options": {
         "outputPath": "dist/design-system",
         "browser": "./src/main.ts",
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "libs/ui/src/lib/styles"
+          ]
+        },
         "polyfills": [
           "zone.js"
         ],
@@ -110,7 +115,8 @@
       "options": {
         "port": 4400,
         "styles": [
-          "libs/ui/src/lib/styles/index.scss"
+          "libs/ui/src/lib/styles/index.scss",
+          ".storybook/preview.scss"
         ],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/ui/src/lib/styles"]

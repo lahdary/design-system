@@ -1,6 +1,6 @@
-import { Meta, StoryObj } from '@storybook/angular';
-import { ModalComponent } from '../modal.component';
+import { Meta, StoryObj, componentWrapperDecorator } from '@storybook/angular';
 import { ButtonComponent } from '../../buttons/button';
+import { ModalComponent } from '../modal.component';
 
 const meta: Meta<ModalComponent> = {
   title: 'Components/Modal',
@@ -71,14 +71,15 @@ const meta: Meta<ModalComponent> = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'A modal dialog component that displays content in a layer above the page.',
+        component:
+          'A modal dialog component that displays content in a layer above the page.',
       },
     },
   },
   decorators: [
-    (story) => ({
-      template: `<div style="height: 400px; position: relative;">${story}</div>`,
-    }),
+    componentWrapperDecorator(
+      (story) => `<div style="margin: 3em">${story}</div>`
+    ),
   ],
 };
 
@@ -87,7 +88,12 @@ type Story = StoryObj<ModalComponent>;
 
 export const Default: Story = {
   render: (args) => ({
-    props: { ...args, toggleModal: function() { this.open = !this.open; } },
+    props: {
+      ...args,
+      toggleModal: function () {
+        this['open'] = !this['open'];
+      },
+    },
     template: `
       <ds-ui-button (clicked)="toggleModal()">Open Modal</ds-ui-button>
       <ds-ui-modal 
@@ -107,7 +113,12 @@ export const Default: Story = {
 
 export const WithoutHeader: Story = {
   render: (args) => ({
-    props: { ...args, toggleModal: function() { this.open = !this.open; } },
+    props: {
+      ...args,
+      toggleModal: function () {
+        this['open'] = !this['open'];
+      },
+    },
     template: `
       <ds-ui-button (clicked)="toggleModal()">Open Modal (No Header)</ds-ui-button>
       <ds-ui-modal 
@@ -237,7 +248,12 @@ export const BackdropTypes: Story = {
 
 export const ComplexContent: Story = {
   render: (args) => ({
-    props: { ...args, toggleModal: function() { this.open = !this.open; } },
+    props: {
+      ...args,
+      toggleModal: function () {
+        this['open'] = !this['open'];
+      },
+    },
     template: `
       <ds-ui-button (clicked)="toggleModal()">Open Complex Modal</ds-ui-button>
       <ds-ui-modal 

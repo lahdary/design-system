@@ -6,22 +6,7 @@ import {
   output,
   signal,
 } from '@angular/core';
-
-/**
- * Button variants
- * @property primary - Primary action button
- * @property secondary - Secondary action button
- * @property tertiary - Tertiary action button (low emphasis)
- */
-export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
-
-/**
- * Button sizes
- * @property sm - Small button
- * @property md - Medium button (default)
- * @property lg - Large button
- */
-export type ButtonSize = 'sm' | 'md' | 'lg';
+import { ButtonSize, ButtonType, ButtonVariant } from '../button.types';
 
 /**
  * Button component
@@ -30,9 +15,9 @@ export type ButtonSize = 'sm' | 'md' | 'lg';
  *
  * @example
  * ```html
- * <ds-button variant="primary" size="md">Click Me</ds-button>
- * <ds-button variant="secondary" [disabled]="true">Disabled</ds-button>
- * <ds-button variant="tertiary" (click)="handleAction()">Tertiary Button</ds-button>
+ * <ds-ui-button variant="primary" size="md">Click Me</ds-ui-button>
+ * <ds-ui-button variant="secondary" [disabled]="true">Disabled</ds-ui-button>
+ * <ds-ui-button variant="tertiary" (click)="handleAction()">Tertiary Button</ds-ui-button>
  * ```
  */
 @Component({
@@ -83,7 +68,7 @@ export class ButtonComponent {
    * Button type attribute
    * @default 'button'
    */
-  type = input<'button' | 'submit' | 'reset'>('button');
+  type = input<ButtonType>('button');
 
   /**
    * Click event emitter

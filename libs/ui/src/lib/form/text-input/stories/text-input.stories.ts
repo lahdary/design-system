@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/angular';
+import { Meta, StoryObj, componentWrapperDecorator } from '@storybook/angular';
 import { TextInputComponent } from '../text-input.component';
 
 const meta: Meta<TextInputComponent> = {
@@ -76,6 +76,11 @@ const meta: Meta<TextInputComponent> = {
     errorMessage: '',
     value: '',
   },
+  decorators: [
+    componentWrapperDecorator(
+      (story) => `<div style="max-width: 400px; margin: 3em;">${story}</div>`
+    ),
+  ],
 };
 
 export default meta;

@@ -1,0 +1,389 @@
+/* Design System Showcase Styles */
+:root {
+  /* Primary Brand Colors */
+  --ds-primary-color: #5B3FE8;
+  --ds-primary-light: rgba(91, 63, 232, 0.1);
+  --ds-primary-dark: #4930BE;
+  
+  /* Secondary Brand Colors */
+  --ds-secondary-color: #20BDFF;
+  --ds-secondary-light: rgba(32, 189, 255, 0.1);
+  --ds-secondary-dark: #0D9FDD;
+  
+  /* Accent Colors */
+  --ds-accent-color: #A5FECB;
+  --ds-accent-dark: #72E7A5;
+  --ds-success-color: #36B37E;
+  --ds-warning-color: #FFAB00;
+  --ds-error-color: #FF5630;
+  --ds-info-color: #0065FF;
+  
+  /* Light Theme Variables */
+  --ds-bg-color: #f9faff; /* Subtle blue tint to make components stand out */
+  --ds-bg-secondary: #f0f3fa; /* Slightly more pronounced secondary background */
+  --ds-text-color: #2C3E50;
+  --ds-text-secondary: #7B8A9A;
+  --ds-text-tertiary: #A3ADC2;
+  --ds-border-color: rgba(91, 63, 232, 0.08); /* Slight brand color in borders */
+  --ds-shadow-color: rgba(91, 63, 232, 0.06); /* Brand-colored shadow */
+  --ds-grid-color: rgba(91, 63, 232, 0.03); /* Subtle grid with brand color */
+  
+  /* Typography */
+  --ds-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --ds-code-font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+  /* Dark Theme Main Colors */
+  --ds-bg-color: #1E2028;
+  --ds-bg-secondary: #262933;
+  --ds-text-color: #E1E5EE;
+  --ds-text-secondary: #A7ADC6;
+  --ds-text-tertiary: #6C7388;
+  --ds-border-color: rgba(255, 255, 255, 0.08);
+  --ds-shadow-color: rgba(0, 0, 0, 0.25);
+  --ds-grid-color: rgba(255, 255, 255, 0.03);
+  
+  /* Adjust colors for dark mode */
+  --ds-primary-light: rgba(91, 63, 232, 0.15);
+  --ds-secondary-light: rgba(32, 189, 255, 0.15);
+}
+
+/* Add subtle brand pattern to the background */
+body {
+  background-color: #f0f2f7;
+  background-image: 
+    radial-gradient(circle at 50% 50%, var(--ds-primary-light) 1px, transparent 1px),
+    radial-gradient(circle at 25% 25%, var(--ds-secondary-light) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
+}
+
+/* Improve and differentiate dark theme background pattern */
+[data-theme="dark"] body {
+  background-color: #151720;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(91, 63, 232, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 25% 25%, rgba(32, 189, 255, 0.08) 1px, transparent 1px);
+}
+
+/* Showcase wrapper styles */
+.ds-showcase-wrapper {
+  position: relative;
+  border-radius: 12px;
+  padding: 1.75rem;
+  margin: 1.5rem 0;
+  background-color: var(--ds-bg-color);
+  color: var(--ds-text-color);
+  border: 1px solid var(--ds-border-color);
+  box-shadow: 
+    0 3px 12px var(--ds-shadow-color),
+    0 1px 4px rgba(91, 63, 232, 0.04);
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  font-family: var(--ds-font-family);
+  overflow: hidden; /* Ensure everything stays contained */
+  max-width: 100%;
+  background-image: 
+    linear-gradient(to bottom right, rgba(91, 63, 232, 0.01) 0%, rgba(32, 189, 255, 0.01) 100%);
+}
+
+/* Header bar with enhanced branding */
+.ds-showcase-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--ds-border-color);
+  z-index: 2;
+  background: linear-gradient(to right, 
+    transparent, 
+    rgba(91, 63, 232, 0.01) 40%, 
+    rgba(32, 189, 255, 0.01) 80%, 
+    transparent);
+}
+
+.ds-showcase-title {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0;
+  color: var(--ds-text-color);
+  display: flex;
+  align-items: center;
+  line-height: 1.4;
+}
+
+/* Component information */
+.ds-showcase-component-info {
+  font-size: 0.85rem;
+  color: var(--ds-text-secondary);
+  margin-top: 0.5rem;
+  font-weight: normal;
+  line-height: 1.5;
+  max-width: 80%;
+}
+
+/* Component container */
+.ds-showcase-content {
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.2s ease;
+  background-image: 
+    linear-gradient(to bottom, rgba(91, 63, 232, 0.01), transparent 50%);
+}
+
+/* Grid background with improved styling */
+.ds-showcase-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(to right, var(--ds-grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--ds-grid-color) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+/* Add refined hover effects with brand focus */
+.ds-showcase-wrapper:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 10px 30px var(--ds-shadow-color),
+    0 3px 10px rgba(91, 63, 232, 0.06);
+  border-color: rgba(91, 63, 232, 0.15);
+}
+
+.ds-showcase-wrapper:hover .ds-showcase-gradient {
+  background-position-x: -50%;
+  opacity: 1;
+  height: 6px;
+}
+
+.ds-showcase-wrapper:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 50%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--ds-secondary-color), transparent);
+  transform: translateX(-50%);
+  opacity: 0.4;
+}
+
+/* Component category badge */
+.ds-showcase-category {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  background: linear-gradient(120deg, var(--ds-primary-light), rgba(32, 189, 255, 0.1));
+  color: var(--ds-primary-color);
+  margin-left: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  height: 20px;
+  box-shadow: 0 1px 3px rgba(91, 63, 232, 0.1);
+  border: 1px solid rgba(91, 63, 232, 0.08);
+  animation: subtlePulse 3s infinite;
+}
+
+/* Component status badges */
+.ds-showcase-status {
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.ds-showcase-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  margin-left: 0.5rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.ds-showcase-status-badge:hover {
+  transform: translateY(-1px);
+}
+
+.ds-showcase-status-badge.stable {
+  background-color: rgba(54, 179, 126, 0.15);
+  color: var(--ds-success-color);
+}
+
+.ds-showcase-status-badge.beta {
+  background-color: rgba(255, 171, 0, 0.15);
+  color: var(--ds-warning-color);
+}
+
+.ds-showcase-status-badge.experimental {
+  background-color: rgba(255, 86, 48, 0.15);
+  color: var(--ds-error-color);
+}
+
+/* Info icon styles with enhanced design */
+.ds-showcase-info-icon {
+  color: var(--ds-text-secondary);
+  opacity: 0.6;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 0.5rem;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--ds-border-color);
+  font-size: 12px;
+}
+
+.ds-showcase-info-icon:hover {
+  opacity: 1;
+  background-color: var(--ds-primary-light);
+  color: var(--ds-primary-color);
+}
+
+/* Animated gradient top border with more professional styling */
+.ds-showcase-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(
+    90deg, 
+    var(--ds-primary-color) 0%,
+    var(--ds-secondary-color) 50%,
+    var(--ds-accent-color) 100%
+  );
+  background-size: 200% 100%;
+  transition: background-position 3s ease, opacity 0.5s ease;
+  border-radius: 12px 12px 0 0;
+  z-index: 3;
+  opacity: 0.9;
+  box-shadow: 0 1px 8px rgba(91, 63, 232, 0.2);
+  animation: gradientShift 8s ease infinite;
+}
+
+/* Component Actions Bar - for interactive controls */
+.ds-showcase-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--ds-border-color);
+}
+
+.ds-showcase-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  border: 1px solid var(--ds-border-color);
+  background: var(--ds-bg-secondary);
+  color: var(--ds-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ds-showcase-action-btn:hover {
+  background: var(--ds-bg-color);
+  border-color: var(--ds-primary-color);
+  color: var(--ds-primary-color);
+}
+
+.ds-showcase-action-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ds-secondary-light);
+}
+
+/* Smooth loading transitions */
+.ds-showcase-wrapper.loading .ds-showcase-content {
+  opacity: 0.6;
+}
+
+/* Code snippet styling */
+.ds-showcase-code {
+  margin-top: 1rem;
+  font-family: var(--ds-code-font-family);
+  font-size: 0.85rem;
+  padding: 1rem;
+  border-radius: 6px;
+  background: var(--ds-bg-secondary);
+  border: 1px solid var(--ds-border-color);
+  color: var(--ds-text-color);
+  overflow-x: auto;
+  position: relative;
+}
+
+/* Ensure header is above the grid */
+.ds-showcase-header {
+  position: relative;
+  z-index: 2;
+}
+
+/* Enhanced title underline on hover for better UX */
+.ds-showcase-title:hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 30%;
+  height: 1px;
+  background-color: var(--ds-primary-color);
+  opacity: 0.5;
+  transition: width 0.2s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ds-showcase-wrapper {
+    padding: 1.25rem;
+    margin: 1rem 0;
+  }
+  
+  .ds-showcase-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 0.75rem;
+  }
+  
+  .ds-showcase-title {
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+  
+  .ds-showcase-status {
+    margin-left: 0;
+    margin-top: 0.5rem;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .ds-showcase-actions {
+    flex-wrap: wrap;
+  }
+}

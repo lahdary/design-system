@@ -1,8 +1,9 @@
 import { Meta, StoryObj } from '@storybook/angular';
-import { ButtonComponent } from '../button.component';
+import { ButtonComponent } from './../components';
 
-const meta: Meta<ButtonComponent> = {
-  title: 'Components/Buttons/Button',
+// Component stories
+const componentMeta: Meta<ButtonComponent> = {
+  title: 'Components/Button/Component',
   component: ButtonComponent,
   tags: ['autodocs'],
   argTypes: {
@@ -32,7 +33,8 @@ const meta: Meta<ButtonComponent> = {
     },
     fullWidth: {
       control: 'boolean',
-      description: 'Whether the button takes up the full width of its container',
+      description:
+        'Whether the button takes up the full width of its container',
     },
     ariaLabel: {
       control: 'text',
@@ -60,10 +62,10 @@ const meta: Meta<ButtonComponent> = {
   },
 };
 
-export default meta;
-type Story = StoryObj<ButtonComponent>;
+export default componentMeta;
+type ComponentStory = StoryObj<ButtonComponent>;
 
-export const Primary: Story = {
+export const Component_Primary: ComponentStory = {
   args: {
     variant: 'primary',
   },
@@ -73,7 +75,7 @@ export const Primary: Story = {
   }),
 };
 
-export const Secondary: Story = {
+export const Component_Secondary: ComponentStory = {
   args: {
     variant: 'secondary',
   },
@@ -83,7 +85,7 @@ export const Secondary: Story = {
   }),
 };
 
-export const Tertiary: Story = {
+export const Component_Tertiary: ComponentStory = {
   args: {
     variant: 'tertiary',
   },
@@ -93,7 +95,7 @@ export const Tertiary: Story = {
   }),
 };
 
-export const Small: Story = {
+export const Component_Small: ComponentStory = {
   args: {
     size: 'sm',
   },
@@ -103,7 +105,17 @@ export const Small: Story = {
   }),
 };
 
-export const Large: Story = {
+export const Component_Medium: ComponentStory = {
+  args: {
+    size: 'md',
+  },
+  render: (args) => ({
+    props: args,
+    template: `<ds-ui-button [variant]="variant" [size]="size" [disabled]="disabled" [loading]="loading" [fullWidth]="fullWidth" [ariaLabel]="ariaLabel" [type]="type" (clicked)="clicked($event)">Medium Button</ds-ui-button>`,
+  }),
+};
+
+export const Component_Large: ComponentStory = {
   args: {
     size: 'lg',
   },
@@ -113,7 +125,7 @@ export const Large: Story = {
   }),
 };
 
-export const Disabled: Story = {
+export const Component_Disabled: ComponentStory = {
   args: {
     disabled: true,
   },
@@ -123,7 +135,7 @@ export const Disabled: Story = {
   }),
 };
 
-export const Loading: Story = {
+export const Component_Loading: ComponentStory = {
   args: {
     loading: true,
   },
@@ -133,47 +145,12 @@ export const Loading: Story = {
   }),
 };
 
-export const FullWidth: Story = {
+export const Component_FullWidth: ComponentStory = {
   args: {
     fullWidth: true,
   },
   render: (args) => ({
     props: args,
-    template: `<ds-ui-button [variant]="variant" [size]="size" [disabled]="disabled" [loading]="loading" [fullWidth]="fullWidth" [ariaLabel]="ariaLabel" [type]="type" (clicked)="clicked($event)">Full Width Button</ds-ui-button>`,
-  }),
-};
-
-export const AllVariants: Story = {
-  render: () => ({
-    template: `
-      <div style="display: flex; flex-direction: column; gap: 16px;">
-        <h3>Primary Variant</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 16px;">
-          <ds-ui-button variant="primary" size="sm">Small</ds-ui-button>
-          <ds-ui-button variant="primary" size="md">Medium</ds-ui-button>
-          <ds-ui-button variant="primary" size="lg">Large</ds-ui-button>
-          <ds-ui-button variant="primary" disabled>Disabled</ds-ui-button>
-          <ds-ui-button variant="primary" loading>Loading</ds-ui-button>
-        </div>
-
-        <h3>Secondary Variant</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 16px;">
-          <ds-ui-button variant="secondary" size="sm">Small</ds-ui-button>
-          <ds-ui-button variant="secondary" size="md">Medium</ds-ui-button>
-          <ds-ui-button variant="secondary" size="lg">Large</ds-ui-button>
-          <ds-ui-button variant="secondary" disabled>Disabled</ds-ui-button>
-          <ds-ui-button variant="secondary" loading>Loading</ds-ui-button>
-        </div>
-
-        <h3>Tertiary Variant</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 16px;">
-          <ds-ui-button variant="tertiary" size="sm">Small</ds-ui-button>
-          <ds-ui-button variant="tertiary" size="md">Medium</ds-ui-button>
-          <ds-ui-button variant="tertiary" size="lg">Large</ds-ui-button>
-          <ds-ui-button variant="tertiary" disabled>Disabled</ds-ui-button>
-          <ds-ui-button variant="tertiary" loading>Loading</ds-ui-button>
-        </div>
-      </div>
-    `,
+    template: `<div style="width: 100%"><ds-ui-button [variant]="variant" [size]="size" [disabled]="disabled" [loading]="loading" [fullWidth]="fullWidth" [ariaLabel]="ariaLabel" [type]="type" (clicked)="clicked($event)">Full Width Button</ds-ui-button></div>`,
   }),
 };

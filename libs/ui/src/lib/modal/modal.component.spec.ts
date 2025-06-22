@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, ViewChild } from '@angular/core';
-import { By } from '@angular/platform-browser';
-import { ModalComponent } from './modal.component';
 import { CommonModule } from '@angular/common';
+import { Component, ViewChild } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { ButtonComponent } from '../buttons/button';
+import { ModalComponent } from './modal.component';
 
 @Component({
   template: `
@@ -25,11 +25,11 @@ import { ButtonComponent } from '../buttons/button';
     </ds-ui-modal>
   `,
   standalone: true,
-  imports: [ModalComponent, CommonModule, ButtonComponent]
+  imports: [ModalComponent, CommonModule, ButtonComponent],
 })
 class TestHostComponent {
   @ViewChild(ModalComponent) modalComponent!: ModalComponent;
-  
+
   isOpen = false;
   modalTitle = 'Test Modal';
   modalSize: 'sm' | 'md' | 'lg' | 'full' = 'md';
@@ -39,9 +39,9 @@ class TestHostComponent {
   showCloseButton = true;
   contentPadding = true;
   showFooter = true;
-  
+
   modalClosedCount = 0;
-  
+
   onModalClose(): void {
     this.modalClosedCount++;
     this.isOpen = false;
@@ -54,7 +54,7 @@ describe('ModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TestHostComponent]
+      imports: [TestHostComponent],
     }).compileComponents();
 
     hostFixture = TestBed.createComponent(TestHostComponent);
@@ -67,23 +67,29 @@ describe('ModalComponent', () => {
   });
 
   it('should not display modal when not open', () => {
-    const modalBackdrop = hostFixture.debugElement.query(By.css('.ds-modal-backdrop'));
+    const modalBackdrop = hostFixture.debugElement.query(
+      By.css('.ds-modal-backdrop')
+    );
     expect(modalBackdrop).toBeFalsy();
   });
 
   it('should display modal when open', () => {
     hostComponent.isOpen = true;
     hostFixture.detectChanges();
-    
-    const modalBackdrop = hostFixture.debugElement.query(By.css('.ds-modal-backdrop'));
+
+    const modalBackdrop = hostFixture.debugElement.query(
+      By.css('.ds-modal-backdrop')
+    );
     expect(modalBackdrop).toBeTruthy();
   });
 
   it('should display title when provided', () => {
     hostComponent.isOpen = true;
     hostFixture.detectChanges();
-    
-    const modalTitle = hostFixture.debugElement.query(By.css('.ds-modal-title'));
+
+    const modalTitle = hostFixture.debugElement.query(
+      By.css('.ds-modal-title')
+    );
     expect(modalTitle.nativeElement.textContent).toBe(hostComponent.modalTitle);
   });
 
@@ -91,8 +97,10 @@ describe('ModalComponent', () => {
     hostComponent.isOpen = true;
     hostComponent.modalTitle = '';
     hostFixture.detectChanges();
-    
-    const modalTitle = hostFixture.debugElement.query(By.css('.ds-modal-title'));
+
+    const modalTitle = hostFixture.debugElement.query(
+      By.css('.ds-modal-title')
+    );
     expect(modalTitle).toBeFalsy();
   });
 
@@ -100,8 +108,10 @@ describe('ModalComponent', () => {
     hostComponent.isOpen = true;
     hostComponent.showCloseButton = true;
     hostFixture.detectChanges();
-    
-    const closeButton = hostFixture.debugElement.query(By.css('.ds-modal-close-btn'));
+
+    const closeButton = hostFixture.debugElement.query(
+      By.css('.ds-modal-close-btn')
+    );
     expect(closeButton).toBeTruthy();
   });
 
@@ -109,19 +119,23 @@ describe('ModalComponent', () => {
     hostComponent.isOpen = true;
     hostComponent.showCloseButton = false;
     hostFixture.detectChanges();
-    
-    const closeButton = hostFixture.debugElement.query(By.css('.ds-modal-close-btn'));
+
+    const closeButton = hostFixture.debugElement.query(
+      By.css('.ds-modal-close-btn')
+    );
     expect(closeButton).toBeFalsy();
   });
 
   it('should emit closed event when close button is clicked', () => {
     hostComponent.isOpen = true;
     hostFixture.detectChanges();
-    
-    const closeButton = hostFixture.debugElement.query(By.css('.ds-modal-close-btn'));
+
+    const closeButton = hostFixture.debugElement.query(
+      By.css('.ds-modal-close-btn')
+    );
     closeButton.nativeElement.click();
     hostFixture.detectChanges();
-    
+
     expect(hostComponent.modalClosedCount).toBe(1);
     expect(hostComponent.isOpen).toBe(false);
   });
@@ -130,11 +144,16 @@ describe('ModalComponent', () => {
     hostComponent.isOpen = true;
     hostComponent.closeOnOutsideClick = true;
     hostFixture.detectChanges();
-    
-    const backdrop = hostFixture.debugElement.query(By.css('.ds-modal-backdrop'));
-    backdrop.triggerEventHandler('click', { target: backdrop.nativeElement, currentTarget: backdrop.nativeElement });
+
+    const backdrop = hostFixture.debugElement.query(
+      By.css('.ds-modal-backdrop')
+    );
+    backdrop.triggerEventHandler('click', {
+      target: backdrop.nativeElement,
+      currentTarget: backdrop.nativeElement,
+    });
     hostFixture.detectChanges();
-    
+
     expect(hostComponent.modalClosedCount).toBe(1);
   });
 
@@ -142,11 +161,16 @@ describe('ModalComponent', () => {
     hostComponent.isOpen = true;
     hostComponent.closeOnOutsideClick = false;
     hostFixture.detectChanges();
-    
-    const backdrop = hostFixture.debugElement.query(By.css('.ds-modal-backdrop'));
-    backdrop.triggerEventHandler('click', { target: backdrop.nativeElement, currentTarget: backdrop.nativeElement });
+
+    const backdrop = hostFixture.debugElement.query(
+      By.css('.ds-modal-backdrop')
+    );
+    backdrop.triggerEventHandler('click', {
+      target: backdrop.nativeElement,
+      currentTarget: backdrop.nativeElement,
+    });
     hostFixture.detectChanges();
-    
+
     expect(hostComponent.modalClosedCount).toBe(0);
     expect(hostComponent.isOpen).toBe(true);
   });
@@ -155,13 +179,13 @@ describe('ModalComponent', () => {
     hostComponent.isOpen = true;
     hostComponent.modalSize = 'lg';
     hostFixture.detectChanges();
-    
+
     let modalElement = hostFixture.debugElement.query(By.css('.ds-modal--lg'));
     expect(modalElement).toBeTruthy();
-    
+
     hostComponent.modalSize = 'sm';
     hostFixture.detectChanges();
-    
+
     modalElement = hostFixture.debugElement.query(By.css('.ds-modal--sm'));
     expect(modalElement).toBeTruthy();
   });
@@ -170,14 +194,18 @@ describe('ModalComponent', () => {
     hostComponent.isOpen = true;
     hostComponent.backdropType = 'blur';
     hostFixture.detectChanges();
-    
-    let backdropElement = hostFixture.debugElement.query(By.css('.ds-modal-backdrop--blur'));
+
+    let backdropElement = hostFixture.debugElement.query(
+      By.css('.ds-modal-backdrop--blur')
+    );
     expect(backdropElement).toBeTruthy();
-    
+
     hostComponent.backdropType = 'none';
     hostFixture.detectChanges();
-    
-    backdropElement = hostFixture.debugElement.query(By.css('.ds-modal-backdrop--none'));
+
+    backdropElement = hostFixture.debugElement.query(
+      By.css('.ds-modal-backdrop--none')
+    );
     expect(backdropElement).toBeTruthy();
   });
 
@@ -185,8 +213,10 @@ describe('ModalComponent', () => {
     hostComponent.isOpen = true;
     hostComponent.contentPadding = true;
     hostFixture.detectChanges();
-    
-    const contentElement = hostFixture.debugElement.query(By.css('.ds-modal-content--padded'));
+
+    const contentElement = hostFixture.debugElement.query(
+      By.css('.ds-modal-content--padded')
+    );
     expect(contentElement).toBeTruthy();
   });
 
@@ -194,8 +224,10 @@ describe('ModalComponent', () => {
     hostComponent.isOpen = true;
     hostComponent.contentPadding = false;
     hostFixture.detectChanges();
-    
-    const contentElement = hostFixture.debugElement.query(By.css('.ds-modal-content--padded'));
+
+    const contentElement = hostFixture.debugElement.query(
+      By.css('.ds-modal-content--padded')
+    );
     expect(contentElement).toBeFalsy();
   });
 
@@ -203,16 +235,20 @@ describe('ModalComponent', () => {
     hostComponent.isOpen = true;
     hostComponent.showFooter = true;
     hostFixture.detectChanges();
-    
-    const footerElement = hostFixture.debugElement.query(By.css('.ds-modal-footer'));
+
+    const footerElement = hostFixture.debugElement.query(
+      By.css('.ds-modal-footer')
+    );
     expect(footerElement).toBeTruthy();
   });
 
   it('should have ARIA attributes for accessibility', () => {
     hostComponent.isOpen = true;
     hostFixture.detectChanges();
-    
-    const modalElement = hostFixture.debugElement.query(By.css('.ds-modal-backdrop'));
+
+    const modalElement = hostFixture.debugElement.query(
+      By.css('.ds-modal-backdrop')
+    );
     expect(modalElement.attributes['role']).toBe('dialog');
     expect(modalElement.attributes['aria-modal']).toBe('true');
     expect(modalElement.attributes['aria-labelledby']).toBe('modal-title');
