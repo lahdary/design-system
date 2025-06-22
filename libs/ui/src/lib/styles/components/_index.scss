@@ -1,6 +1,8 @@
 // Export all component styles
 
 @forward 'button';
+@forward 'select';
+@forward 'multiple-select';
 // Add more components as they are created, e.g:
 // @forward 'card';
 // @forward 'alert';

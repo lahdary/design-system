@@ -1,0 +1,139 @@
+<button
+  class="ds-select"
+  [class.ds-select--disabled]="disabled()"
+  [class.ds-select--error]="!!error()"
+  [class.ds-select--sm]="size() === 'sm'"
+  [class.ds-select--md]="size() === 'md'"
+  [class.ds-select--lg]="size() === 'lg'"
+  [class.ds-select--open]="isOpen()"
+  [disabled]="disabled() || loading()"
+  [attr.aria-expanded]="isOpen()"
+  [attr.aria-required]="required()"
+  [attr.aria-invalid]="!!error()"
+  [attr.aria-controls]="id"
+  [attr.aria-activedescendant]="highlightedOptionId()"
+  (mousedown)="$event.preventDefault();" 
+  (click)="toggleDropdown($event)"
+  (blur)="onBlur($event)"
+  (keydown)="onKeyDown($event)"
+  type="button"
+>
+  <div class="ds-select__content">
+    <!-- Display selected value or placeholder -->
+    <span class="ds-select__value" [class.ds-select__placeholder]="!displayValue()">
+      {{ displayValue() || placeholder() }}
+      <!-- No visible indication but will appear in DOM for debugging -->
+      <span style="display:none;">Raw value: {{value() !== null && value() !== undefined ? value() : 'null'}}</span>
+    </span>
+
+    <!-- Clear button if clearable -->
+    <button
+      *ngIf="clearable() && !!value() && !disabled() && !loading()"
+      class="ds-select__clear-btn"
+      (click)="clearSelection($event)"
+      aria-label="Clear selection"
+      type="button"
+    >
+      <span class="ds-select__clear-icon">×</span>
+    </button>
+
+    <!-- Loading indicator -->
+    <div *ngIf="loading()" class="ds-select__spinner">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <circle
+          class="ds-select__spinner-circle"
+          cx="12"
+          cy="12"
+          r="10"
+          fill="none"
+          stroke-width="3"
+        ></circle>
+      </svg>
+    </div>
+
+    <!-- Dropdown indicator -->
+    <span class="ds-select__arrow" [class.ds-select__arrow--open]="isOpen()">
+      <svg
+        width="10"
+        height="6"
+        viewBox="0 0 10 6"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1 1L5 5L9 1"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </span>
+  </div>
+</button>
+
+<!-- Dropdown menu -->
+<div
+  *ngIf="isOpen()"
+  class="ds-select__dropdown"
+  [id]="dropdownId"
+  role="listbox"
+  [attr.aria-multiselectable]="multiple()"
+  [style.width.px]="dropdownWidth()"
+  [style.display]="isOpen() ? 'block' : 'none'"
+  (mouseenter)="mouseOverDropdown.set(true)"
+  (mouseleave)="mouseOverDropdown.set(false)"
+  (click)="$event.stopPropagation()"
+>
+  <!-- Search input for searchable select -->
+  <div *ngIf="searchable()" class="ds-select__search-container">
+    <input
+      class="ds-select__search-input"
+      type="text"
+      placeholder="Search..."
+      [value]="searchText()"
+      (input)="onSearchChange($event)"
+      (click)="$event.stopPropagation()"
+      (keydown)="onKeyDown($event)"
+    />
+  </div>
+
+  <!-- Option groups and options -->
+  <ng-container *ngIf="filteredOptions().length; else noOptions">
+    <ng-container *ngFor="let group of optionGroups(); trackBy: trackByGroup">
+      <div *ngIf="group[0]" class="ds-select__group-label">{{ group[0] }}</div>
+      <div
+        *ngFor="let option of group[1]; let i = index; trackBy: trackByValue"
+        class="ds-select__option"
+        [id]="dropdownId + '-option-' + option.value"
+        [class.ds-select__option--highlighted]="highlightedIndex() === filteredOptions().indexOf(option)"
+        [class.ds-select__option--selected]="isOptionSelected(option)"
+        [class.ds-select__option--disabled]="option.disabled"
+        [attr.aria-selected]="isOptionSelected(option)"
+        [attr.aria-disabled]="option.disabled"
+        role="option"
+        (click)="!option.disabled && onOptionSelect(option, $event)"
+        (mouseenter)="onMouseEnterOption(filteredOptions().indexOf(option))"
+      >
+        <!-- Checkbox for multiple select -->
+        <div *ngIf="multiple()" class="ds-select__multi-checkbox">
+          <input 
+            type="checkbox" 
+            [checked]="isOptionSelected(option)" 
+            [disabled]="option.disabled"
+            (click)="$event.stopPropagation()"
+            (change)="onCheckboxChange(option, $event)">
+        </div>
+        <span class="ds-select__option-label">{{ option.label }}</span>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <!-- No options template -->
+  <ng-template #noOptions>
+    <div class="ds-select__no-results">No options available</div>
+  </ng-template>
+</div>
+
+<!-- Error message -->
+<div *ngIf="error()" class="ds-select__error">{{ error() }}</div>

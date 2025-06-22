@@ -1,0 +1,76 @@
+// Multiple Select directive styles
+// This extends the base Select component styles
+
+.ds-multiple-select {
+  // Add a visual indicator that this is a multiple select
+  .ds-select__value::before {
+    content: '';
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 1px;
+    background-color: var(--color-primary);
+    opacity: 0.5;
+  }
+
+  // Enhanced checkbox styling for multiple select directive
+  .ds-select__multi-checkbox {
+    justify-content: center;
+    
+    input[type="checkbox"] {
+      width: 1rem;
+      height: 1rem;
+      position: relative;
+      cursor: pointer;
+      accent-color: var(--color-primary);
+    }
+  }
+
+  // Add a visual indicator for maximum selections
+  &[data-max-selections] {
+    .ds-select::after {
+      content: attr(data-max-selections);
+      position: absolute;
+      top: -0.5rem;
+      right: -0.5rem;
+      background-color: var(--color-primary);
+      color: white;
+      border-radius: 50%;
+      width: 1.25rem;
+      height: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: var(--font-weight-bold);
+    }
+  }
+
+  // When option is being selected in a multiple select
+  // fade transition for better visual feedback
+  .ds-select__option {
+    transition: background-color 0.15s ease, opacity 0.15s ease;
+    
+    &--selected {
+      opacity: 0.85;
+      
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  // When multiple select is enabled, make selections more visible
+  .ds-select__option--selected {
+    position: relative;
+    
+    &::after {
+      content: '✓';
+      position: absolute;
+      right: var(--spacing-2);
+      color: var(--color-primary);
+      font-weight: var(--font-weight-bold);
+    }
+  }
+}

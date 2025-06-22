@@ -1,0 +1,283 @@
+@use 'variables';
+@use 'mixins';
+
+.ds-select-container {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+.ds-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--font-family-base);
+  background-color: var(--select-bg);
+  color: var(--select-text);
+  border: 1px solid var(--select-border);
+  border-radius: var(--border-radius-md);
+  transition: all 0.2s ease;
+  padding: 0 var(--spacing-4);
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  
+  &:hover:not(.ds-select--disabled) {
+    border-color: var(--select-border-hover);
+  }
+  
+  &:focus {
+    border-color: var(--select-border-focus);
+    box-shadow: var(--focus-ring);
+  }
+  
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: var(--select-bg-disabled);
+  }
+  
+  &--error {
+    border-color: var(--color-error);
+    
+    &:hover, &:focus {
+      border-color: var(--color-error);
+    }
+  }
+  
+  &--sm {
+    height: var(--select-height-sm);
+    font-size: var(--font-size-sm);
+  }
+  
+  &--md {
+    height: var(--select-height-md);
+    font-size: var(--font-size-base);
+  }
+  
+  &--lg {
+    height: var(--select-height-lg);
+    font-size: var(--font-size-lg);
+  }
+  
+  &--open {
+    border-color: var(--select-border-focus);
+    box-shadow: var(--focus-ring);
+  }
+}
+
+.ds-select__content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.ds-select__value {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ds-select__placeholder {
+  color: var(--select-placeholder);
+}
+
+.ds-select__arrow {
+  margin-left: var(--spacing-2);
+  transition: transform 0.2s ease;
+  
+  .ds-select--open & {
+    transform: rotate(180deg);
+  }
+}
+
+.ds-select__clear-btn {
+  margin-left: var(--spacing-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 2px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--select-clear-icon);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: var(--select-clear-hover-bg);
+    color: var(--select-clear-hover);
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+}
+
+.ds-select__clear-icon {
+  font-size: 1.2em;
+  line-height: 0.7;
+}
+
+.ds-select__dropdown {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: var(--dropdown-bg);
+  border: 1px solid var(--dropdown-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--dropdown-shadow);
+  z-index: 1000; /* Ensure it's high enough to appear above other elements */
+  margin-top: 4px;
+  padding: var(--spacing-1) 0;
+  /* By default, dropdown menu is not displayed */
+  display: none;
+  
+  /* Display when parent is open */
+  .ds-select--open & {
+    display: block;
+  }
+}
+
+.ds-select__search-container {
+  padding: var(--spacing-1) var(--spacing-2);
+  position: sticky;
+  top: 0;
+  background-color: var(--dropdown-bg);
+  z-index: 1;
+}
+
+.ds-select__search-input {
+  width: 100%;
+  padding: var(--spacing-1) var(--spacing-2);
+  border: 1px solid var(--input-border);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--input-border-focus);
+    box-shadow: var(--focus-ring);
+  }
+}
+
+.ds-select__group-label {
+  padding: var(--spacing-1) var(--spacing-4);
+  color: var(--dropdown-group-label);
+  font-weight: 600;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ds-select__option {
+  padding: var(--spacing-2) var(--spacing-4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.15s ease;
+  position: relative; /* Ensure position is defined */
+  z-index: 5; /* Make sure options are clickable */
+  pointer-events: auto; /* Ensure click events work */
+  
+  &:hover:not(.ds-select__option--disabled),
+  &--highlighted:not(.ds-select__option--disabled) {
+    background-color: var(--dropdown-option-hover);
+  }
+  
+  &--selected {
+    background-color: var(--dropdown-option-selected);
+    font-weight: 500;
+    
+    &:hover:not(.ds-select__option--disabled),
+    &.ds-select__option--highlighted:not(.ds-select__option--disabled) {
+      background-color: var(--dropdown-option-selected-hover);
+    }
+  }
+  
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.ds-select__option-label {
+  flex: 1;
+  pointer-events: none; /* This ensures clicks pass through to the parent option element */
+  user-select: none; /* Prevent text selection which can interfere with clicking */
+}
+
+/* Base styling for multiple select checkbox, extended in _multiple-select.scss */
+.ds-select__multi-checkbox {
+  margin-right: var(--spacing-2);
+  display: flex;
+  align-items: center;
+  
+  input {
+    pointer-events: auto; /* Make sure checkbox is clickable */
+  }
+}
+
+.ds-select__no-results {
+  padding: var(--spacing-4);
+  color: var(--dropdown-no-results);
+  text-align: center;
+  font-style: italic;
+}
+
+.ds-select__spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: var(--spacing-2);
+  width: 1em;
+  height: 1em;
+}
+
+.ds-select__spinner-circle {
+  stroke: currentColor;
+  stroke-dasharray: 80;
+  stroke-dashoffset: 60;
+  animation: ds-select-spinner-dash 1.5s ease-in-out infinite;
+}
+
+@keyframes ds-select-spinner-dash {
+  0% {
+    stroke-dashoffset: 60;
+    transform: rotate(0);
+  }
+  50% {
+    stroke-dashoffset: 20;
+    transform: rotate(45deg);
+  }
+  100% {
+    stroke-dashoffset: 60;
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-select,
+  .ds-select__arrow,
+  .ds-select__clear-btn,
+  .ds-select__option,
+  .ds-select__spinner-circle {
+    transition: none;
+    animation: none;
+  }
+}
+
+// Error message styling
+.ds-select__error {
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-1);
+}

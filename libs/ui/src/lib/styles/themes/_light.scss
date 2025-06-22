@@ -144,4 +144,29 @@
   
   /* Button */
   --color-primary-rgb: 92, 124, 250;
+  
+  /* Select and Dropdowns */
+  --select-bg: var(--color-surface);
+  --select-text: var(--color-text-primary);
+  --select-border: var(--color-border);
+  --select-border-hover: var(--color-border-hover);
+  --select-border-focus: var(--color-primary);
+  --select-bg-disabled: var(--color-background-subtle);
+  --select-placeholder: var(--color-text-tertiary);
+  --select-height-sm: 2rem;
+  --select-height-md: 2.5rem;
+  --select-height-lg: 3rem;
+  --select-clear-icon: var(--color-text-tertiary);
+  --select-clear-hover-bg: rgba(0, 0, 0, 0.05);
+  --select-clear-hover: var(--color-error);
+  --dropdown-bg: var(--color-surface);
+  --dropdown-border: var(--color-border);
+  --dropdown-shadow: var(--shadow-md);
+  --dropdown-group-label: var(--color-text-secondary);
+  --dropdown-option-hover: var(--color-background-subtle);
+  --dropdown-option-selected: rgba(var(--color-primary-rgb), 0.15);
+  --dropdown-option-selected-hover: rgba(var(--color-primary-rgb), 0.25);
+  --dropdown-no-results: var(--color-text-tertiary);
+  --input-border: var(--color-border);
+  --input-border-focus: var(--color-primary);
 }
