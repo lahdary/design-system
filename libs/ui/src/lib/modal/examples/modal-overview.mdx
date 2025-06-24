@@ -1,0 +1,47 @@
+{/* modal-overview.mdx */}
+import { Meta, Story } from '@storybook/blocks';
+
+<Meta title="Components/Modal/Overview" />
+
+# Modal Service
+
+A powerful service for managing dynamic modal dialogs in Angular applications.
+
+## Available Stories
+
+Explore the following examples to learn about different aspects of the Modal Service:
+
+1. **Basic Usage** - Learn how to open modals with different configurations (size, backdrop, etc.)
+
+2. **Data Form** - See how to use modals for data manipulation and track form changes in real-time
+
+3. **Real-Time Updates** - Explore advanced bi-directional communication between modals and parent components
+
+## Key Features
+
+- **Dynamic Component Loading** - Render any Angular component inside modals
+- **Flexible Configuration** - Configure size, backdrop, animations, and more
+- **Signal-Based State Management** - Modern, reactive state handling
+- **Accessibility** - Built with a11y best practices
+- **Two-Way Data Communication** - Pass data in and get results back
+
+## Basic Example
+
+```typescript
+const modalRef = this.modalService.open(YourComponent, {
+  title: 'Your Modal Title',
+  size: 'md',
+  data: { yourProp: 'value' },
+});
+
+modalRef.afterClosed((result) => {
+  console.log('Modal closed with result:', result);
+});
+```
+
+## Documentation
+
+For complete documentation of the Modal Service API, see:
+
+- [README](/docs/components-modal--docs)
+- [API Reference](https://github.com/yourusername/design-system/blob/main/libs/ui/src/lib/modal/README.md)

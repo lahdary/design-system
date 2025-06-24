@@ -1,17 +1,35 @@
 import type { StorybookConfig } from '@storybook/angular';
 
-const config: StorybookConfig = {
+// Extended Storybook configuration type to support newer features
+type CustomStorybookConfig = StorybookConfig & {
+  features?: {
+    buildStoriesJson?: boolean;
+  };
+  docs?: {
+    autodocs?: boolean | 'tag';
+  };
+};
+
+const config: CustomStorybookConfig = {
   stories: [
     '../src/app/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
-    '../libs/ui/src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+    '../libs/ui/src/lib/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
   ],
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
+    '@storybook/addon-docs',
   ],
   framework: {
     name: '@storybook/angular',
     options: {},
+  },
+  // For Storybook v9, docs configuration is different
+  // features: {
+  //   buildStoriesJson: true
+  // },
+  docs: {
+    autodocs: true,
   },
 };
 

@@ -140,6 +140,7 @@ export class ModalComponent {
 
     const checkFocusableElements = () => {
       if (this.open) {
+        // Reduced timeout for more responsive focus handling
         setTimeout(() => {
           const focusableElements =
             this.elementRef.nativeElement.querySelectorAll(
@@ -153,7 +154,7 @@ export class ModalComponent {
             ] as HTMLElement;
             firstFocusableEl.focus();
           }
-        }, 100);
+        }, 50); // Reduced from 100ms for faster focus
       }
     };
 
@@ -212,6 +213,9 @@ export class ModalComponent {
    * Close handler
    */
   close(): void {
+    // Immediately set open to false
+    this._open = false;
+    // Immediately emit the closed event without delay
     this.closed.emit();
   }
 

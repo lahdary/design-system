@@ -74,6 +74,16 @@ export const Directive_Primary: DirectiveStory = {
   args: {
     variant: 'primary',
   },
+  parameters: {
+    docs: {
+      canvas: {
+        sourceState: 'shown', // Always show the source code
+        layout: 'padded',
+        description:
+          'Primary buttons should be used for the main call-to-action on a page or form',
+      },
+    },
+  },
   render: (args) => ({
     props: args,
     template: `<button ds-ui-button [variant]="variant" [size]="size" [disabled]="disabled" [loading]="loading" [fullWidth]="fullWidth" [ariaLabel]="ariaLabel" [type]="type" (clicked)="clicked($event)">Primary Button</button>`,

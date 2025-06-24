@@ -19,6 +19,7 @@
     "@angular/platform-server": "~20.0.0",
     "@angular/router": "~20.0.0",
     "@angular/ssr": "~20.0.0",
+    "@storybook/blocks": "^9.0.0-alpha.17",
     "express": "^4.21.2",
     "rxjs": "~7.8.0",
     "zone.js": "~0.15.0"
@@ -43,6 +44,7 @@
     "@nx/workspace": "21.2.1",
     "@playwright/test": "^1.36.0",
     "@schematics/angular": "~20.0.0",
+    "@storybook/addon-docs": "^9.0.12",
     "@storybook/angular": "9.0.12",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",

@@ -274,7 +274,7 @@ export const ComplexContent: Story = {
           
           <div style="border-top: 1px solid #eee; padding-top: 16px;">
             <h4>Contact Information</h4>
-            <p><strong>Email:</strong> jane.smith@example.com</p>
+            <p><strong>Email:</strong> jane.smith&#64;example.com</p>
             <p><strong>Phone:</strong> (555) 123-4567</p>
             <p><strong>Location:</strong> San Francisco, CA</p>
           </div>

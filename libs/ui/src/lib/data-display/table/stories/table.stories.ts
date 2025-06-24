@@ -10,12 +10,9 @@ import {
   TableHeaderDirective,
   TableRowDirective,
 } from '../directives';
-import {
-  SortEvent,
-  TableBorderStyle,
-  TableDensity,
-  TableSize,
-} from '../table.types';
+import { SortEvent } from '../table.types';
+// Using import type for the types used in decorated properties
+import type { TableBorderStyle, TableDensity, TableSize } from '../table.types';
 
 // Demo component for the table stories
 @Component({

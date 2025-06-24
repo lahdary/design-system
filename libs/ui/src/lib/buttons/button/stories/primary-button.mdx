@@ -1,0 +1,36 @@
+{/* primary-button.mdx */}
+import { Meta, Story, Canvas } from '@storybook/blocks';
+import * as ButtonDirectiveStories from './button.directive.stories';
+
+<Meta title="Components/Button/Directive/Primary" />
+
+# Primary Button
+
+The primary button is the main call-to-action element in your user interface. It should be used for the most important action on a page or form.
+
+<Canvas of={ButtonDirectiveStories.Directive_Primary} sourceState="shown">
+  <Story of={ButtonDirectiveStories.Directive_Primary} />
+</Canvas>
+
+## Usage Guidelines
+
+The primary button should:
+
+- Be used sparingly (ideally one primary button per view)
+- Clearly communicate the main action
+- Stand out visually from other UI elements
+- Have concise, action-oriented text (e.g., "Submit", "Save", "Continue")
+
+## Implementation
+
+```html
+<button ds-ui-button variant="primary" (clicked)="handleAction()">
+  Primary Action
+</button>
+```
+
+## Accessibility
+
+- Meets WCAG 2.1 AA color contrast requirements
+- Supports keyboard navigation and focus states
+- Works with screen readers through appropriate ARIA attributes
