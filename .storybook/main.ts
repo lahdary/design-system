@@ -31,6 +31,8 @@ const config: CustomStorybookConfig = {
   docs: {
     autodocs: true,
   },
+  // Add this for GitHub Pages deployment
+  staticDirs: ['../public'],
 };
 
 export default config;

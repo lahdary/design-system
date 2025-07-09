@@ -5,7 +5,10 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "build-storybook": "npx nx build-storybook design-system",
+    "deploy-storybook": "npm run build-storybook && echo 'Storybook built! Push to GitHub to deploy.'",
+    "preview-storybook": "npx nx static-storybook design-system"
   },
   "private": true,
   "dependencies": {
