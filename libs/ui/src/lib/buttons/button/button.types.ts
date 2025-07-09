@@ -14,6 +14,21 @@
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
 
 /**
+ * Icon button colors
+ * @property primary - Primary icon button
+ * @property secondary - Secondary icon button
+ * @property tertiary - Tertiary icon button
+ */
+export type IconButtonColor = ButtonVariant;
+
+/**
+ * FAB button types
+ * @property standard - Regular FAB button
+ * @property extended - Extended FAB button with text
+ */
+export type FabType = 'standard' | 'extended';
+
+/**
  * Button sizes
  * @property sm - Small button
  * @property md - Medium button (default)

@@ -1,13 +1,13 @@
 /* Variables shared across themes */
 :root {
   /* Color values in RGB format for opacity/alpha operations */
-  --color-primary-rgb: 92, 124, 250;
-  --color-secondary-rgb: 240, 101, 149;
-  --color-tertiary-rgb: 252, 196, 25;
-  --color-success-rgb: 76, 175, 80;
-  --color-warning-rgb: 255, 152, 0;
-  --color-error-rgb: 244, 67, 54;
-  --color-info-rgb: 3, 169, 244;
+  --color-primary-rgb: 24, 144, 255;        /* Vibrant blue */
+  --color-secondary-rgb: 32, 201, 151;      /* Modern teal */
+  --color-tertiary-rgb: 255, 146, 43;       /* Vibrant coral */
+  --color-success-rgb: 82, 196, 26;         /* Bright green */
+  --color-warning-rgb: 250, 173, 20;        /* Warm amber */
+  --color-error-rgb: 245, 34, 45;           /* Bold red */
+  --color-info-rgb: 22, 119, 255;           /* Info blue */
   
   /* Line heights */
   --line-height-none: 1;
@@ -20,11 +20,11 @@
 
 /* Dark theme overrides */
 [data-theme="dark"] {
-  --color-primary-rgb: 186, 200, 255;
-  --color-secondary-rgb: 252, 194, 215;
-  --color-tertiary-rgb: 255, 236, 153;
-  --color-success-rgb: 129, 199, 132;
-  --color-warning-rgb: 255, 183, 77;
-  --color-error-rgb: 229, 115, 115;
-  --color-info-rgb: 79, 195, 247;
+  --color-primary-rgb: 64, 169, 255;        /* Lighter blue for dark mode */
+  --color-secondary-rgb: 56, 217, 169;      /* Brighter teal for dark mode */
+  --color-tertiary-rgb: 255, 169, 77;       /* Lighter coral for dark mode */
+  --color-success-rgb: 114, 215, 74;        /* Lighter green for dark mode */
+  --color-warning-rgb: 255, 184, 77;        /* Lighter amber for dark mode */
+  --color-error-rgb: 255, 85, 95;           /* Lighter red for dark mode */
+  --color-info-rgb: 69, 143, 255;           /* Lighter info blue for dark mode */
 }

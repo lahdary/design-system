@@ -1,0 +1,247 @@
+// Floating Action Button (FAB) component styles
+// This file contains styles for the FAB button directive
+
+@use 'mixins' as *;
+
+// Base FAB styles
+.ds-fab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
+  border: none;
+  border-radius: 50%; // Circular by default
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.2, 0.6, 0.4, 1);
+  user-select: none;
+  outline: none;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15), 0 4px 5px rgba(0, 0, 0, 0.1);
+  z-index: 5; // Higher z-index to float above content
+  gap: var(--spacing-2);
+  padding: 0;
+
+  /* Text should typically be hidden for standard FABs, but will be shown in extended FABs */
+  span:not(.icon) {
+    display: none;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.25), 0 3px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  &:disabled, &[aria-disabled="true"] {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.65;
+    filter: grayscale(30%);
+  }
+
+  /* Extended FAB - becomes a pill shape with text */
+  &--extended {
+    border-radius: 24px; // Pill shape
+    padding: 0 var(--spacing-4);
+    
+    span:not(.icon) {
+      display: inline-block;
+      white-space: nowrap;
+      margin-left: var(--spacing-2);
+    }
+  }
+
+  /* Size variants */
+  &--sm {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-sm);
+    min-width: 40px;
+    
+    &.ds-fab--extended {
+      min-width: 80px;
+      height: 36px;
+    }
+  }
+
+  &--md {
+    width: 56px;
+    height: 56px;
+    font-size: var(--font-size-base);
+    min-width: 56px;
+    
+    &.ds-fab--extended {
+      min-width: 120px;
+      height: 48px;
+    }
+  }
+
+  &--lg {
+    width: 70px;
+    height: 70px;
+    font-size: var(--font-size-lg);
+    min-width: 70px;
+    
+    &.ds-fab--extended {
+      min-width: 140px;
+      height: 56px;
+    }
+  }
+
+  /* Primary variant */
+  &--primary {
+    background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.9), rgba(var(--color-primary-rgb), 1));
+    color: var(--color-white);
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.35), 0 3px 6px rgba(0, 0, 0, 0.15);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 1), rgba(var(--color-primary-rgb), 0.8));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: inherit;
+      z-index: -1;
+    }
+
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 14px rgba(var(--color-primary-rgb), 0.4), 0 4px 8px rgba(0, 0, 0, 0.2);
+      
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &:active:not(:disabled):not([aria-disabled="true"]) {
+      transform: translateY(-1px) scale(1);
+      box-shadow: 0 2px 8px rgba(var(--color-primary-rgb), 0.3);
+    }
+
+    &:disabled, &[aria-disabled="true"] {
+      background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.6), rgba(var(--color-primary-rgb), 0.7));
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-shadow: none;
+    }
+  }
+
+  /* Secondary variant */
+  &--secondary {
+    background: linear-gradient(135deg, rgba(var(--color-secondary-rgb), 0.9), rgba(var(--color-secondary-rgb), 1));
+    color: var(--color-white);
+    box-shadow: 0 4px 12px rgba(var(--color-secondary-rgb), 0.35), 0 3px 6px rgba(0, 0, 0, 0.15);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(var(--color-secondary-rgb), 1), rgba(var(--color-secondary-rgb), 0.8));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: inherit;
+      z-index: -1;
+    }
+
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 14px rgba(var(--color-secondary-rgb), 0.4), 0 4px 8px rgba(0, 0, 0, 0.2);
+      
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &:active:not(:disabled):not([aria-disabled="true"]) {
+      transform: translateY(-1px) scale(1);
+      box-shadow: 0 2px 8px rgba(var(--color-secondary-rgb), 0.3);
+    }
+
+    &:disabled, &[aria-disabled="true"] {
+      background: linear-gradient(135deg, rgba(var(--color-secondary-rgb), 0.6), rgba(var(--color-secondary-rgb), 0.7));
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  /* Tertiary variant */
+  &--tertiary {
+    background: linear-gradient(135deg, rgba(var(--color-tertiary-rgb), 0.9), rgba(var(--color-tertiary-rgb), 1));
+    color: rgba(0, 0, 0, 0.87); // Dark text for better contrast with bright tertiary colors
+    box-shadow: 0 4px 12px rgba(var(--color-tertiary-rgb), 0.35), 0 3px 6px rgba(0, 0, 0, 0.15);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(var(--color-tertiary-rgb), 1), rgba(var(--color-tertiary-rgb), 0.8));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: inherit;
+      z-index: -1;
+    }
+
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 14px rgba(var(--color-tertiary-rgb), 0.4), 0 4px 8px rgba(0, 0, 0, 0.2);
+      
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &:active:not(:disabled):not([aria-disabled="true"]) {
+      transform: translateY(-1px) scale(1);
+      box-shadow: 0 2px 8px rgba(var(--color-tertiary-rgb), 0.3);
+    }
+
+    &:disabled, &[aria-disabled="true"] {
+      background: linear-gradient(135deg, rgba(var(--color-tertiary-rgb), 0.6), rgba(var(--color-tertiary-rgb), 0.7));
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  /* Loading state */
+  &--loading {
+    color: transparent !important;
+    pointer-events: none;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: inherit;
+      border-radius: inherit;
+      opacity: 0.8;
+      z-index: 0;
+      backdrop-filter: blur(1px);
+    }
+  }
+
+  /* Ensure icon is properly centered and sized */
+  svg, i, span.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 1.5em;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Material Icons specific adjustment */
+  .material-icons {
+    font-size: 1.5em;
+  }
+  
+  img.icon {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+  }
+}

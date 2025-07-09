@@ -1,19 +1,19 @@
 /* Dark theme variables */
 [data-theme="dark"] {
-  /* Color system */
-  --color-primary: #90caf9;
-  --color-primary-light: #bbdefb;
-  --color-primary-dark: #42a5f5;
-  --color-primary-hover: #64b5f6;
-  --color-primary-active: #42a5f5;
-  --color-primary-disabled: rgba(144, 202, 249, 0.5);
+  /* Color system - Futuristic cyberpunk palette */
+  --color-primary: #00e5ff;
+  --color-primary-light: #6effff;
+  --color-primary-dark: #00b8d4;
+  --color-primary-hover: #00d4ff;
+  --color-primary-active: #00b8d4;
+  --color-primary-disabled: rgba(0, 229, 255, 0.5);
   
-  --color-secondary: #f48fb1;
-  --color-secondary-light: #f8bbd0;
-  --color-secondary-dark: #ec407a;
-  --color-secondary-hover: #f06292;
-  --color-secondary-active: #ec407a;
-  --color-secondary-disabled: rgba(244, 143, 177, 0.5);
+  --color-secondary: #e040fb;
+  --color-secondary-light: #ea80fc;
+  --color-secondary-dark: #c51162;
+  --color-secondary-hover: #d500f9;
+  --color-secondary-active: #c51162;
+  --color-secondary-disabled: rgba(224, 64, 251, 0.5);
   
   /* Surface colors */
   --color-surface: #121212;
@@ -30,7 +30,7 @@
   --color-text-secondary: rgba(255, 255, 255, 0.6);
   --color-text-tertiary: rgba(255, 255, 255, 0.38);
   --color-text-disabled: rgba(255, 255, 255, 0.38);
-  --color-text-link: #90caf9;
+  --color-text-link: #00e5ff;
   --color-white: #ffffff;
   --color-white-muted: rgba(255, 255, 255, 0.6);
   
@@ -39,11 +39,11 @@
   --color-border-hover: #616161;
   --color-border-disabled: #2d2d2d;
   
-  /* Status colors */
-  --color-success: #81c784;
-  --color-warning: #ffb74d;
-  --color-error: #e57373;
-  --color-info: #4fc3f7;
+  /* Status colors - Futuristic variants */
+  --color-success: #00e676;
+  --color-warning: #ff9100;
+  --color-error: #ff1744;
+  --color-info: #00b0ff;
   
   /* Shadows (darker for better visibility in dark mode) */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
@@ -53,7 +53,7 @@
   --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.4);
   
   /* Focus ring */
-  --focus-ring: 0 0 0 3px rgba(144, 202, 249, 0.5);
+  --focus-ring: 0 0 0 3px rgba(0, 229, 255, 0.5);
   
   /* Component-specific variables */
   
@@ -81,7 +81,7 @@
   --toggle-spinner-color: var(--color-primary);
   
   /* Button */
-  --color-primary-rgb: 144, 202, 249;
+  --color-primary-rgb: 0, 229, 255;
   
   /* Select and Dropdowns */
   --select-bg: var(--color-surface);

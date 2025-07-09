@@ -1,0 +1,191 @@
+// Icon Button component styles
+// This file contains styles for the icon button directive
+
+@use 'mixins' as *;
+
+// Base icon button styles
+.ds-icon-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-base);
+  border: none;
+  border-radius: 50%; // Circular button
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  user-select: none;
+  outline: none;
+  overflow: hidden;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.3), 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &:disabled, &[aria-disabled="true"] {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.65;
+    filter: grayscale(30%);
+  }
+
+  /* Size variants */
+  &--sm {
+    width: 32px;
+    height: 32px;
+    font-size: var(--font-size-sm);
+    min-width: 32px;
+  }
+
+  &--md {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-base);
+    min-width: 40px;
+  }
+
+  &--lg {
+    width: 48px;
+    height: 48px;
+    font-size: var(--font-size-lg);
+    min-width: 48px;
+  }
+
+  /* Primary variant */
+  &--primary {
+    background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.9), rgba(var(--color-primary-rgb), 1));
+    color: var(--color-white);
+    box-shadow: 0 2px 8px rgba(var(--color-primary-rgb), 0.3);
+    
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(var(--color-primary-rgb), 0.4);
+      background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 1), rgba(var(--color-primary-rgb), 0.9));
+    }
+
+    &:active:not(:disabled):not([aria-disabled="true"]) {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(var(--color-primary-rgb), 0.3);
+    }
+
+    &:disabled, &[aria-disabled="true"] {
+      background: rgba(var(--color-primary-rgb), 0.6);
+      box-shadow: none;
+    }
+  }
+
+  /* Secondary variant */
+  &--secondary {
+    background-color: rgba(var(--color-white-rgb, 255, 255, 255), 1);
+    color: rgba(var(--color-primary-rgb), 1);
+    border: 2px solid rgba(var(--color-primary-rgb), 0.8);
+    box-shadow: 0 2px 6px rgba(var(--color-primary-rgb), 0.12);
+
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      background-color: rgba(var(--color-primary-rgb), 0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(var(--color-primary-rgb), 0.2);
+      border-color: rgba(var(--color-primary-rgb), 1);
+    }
+
+    &:active:not(:disabled):not([aria-disabled="true"]) {
+      transform: translateY(0);
+      box-shadow: 0 1px 4px rgba(var(--color-primary-rgb), 0.15);
+      background-color: rgba(var(--color-primary-rgb), 0.12);
+    }
+
+    &:disabled, &[aria-disabled="true"] {
+      color: rgba(var(--color-primary-rgb), 0.45);
+      border-color: rgba(var(--color-primary-rgb), 0.4);
+      background-color: rgba(var(--color-white-rgb, 255, 255, 255), 0.95);
+      box-shadow: none;
+    }
+  }
+
+  /* Tertiary variant */
+  &--tertiary {
+    background-color: transparent;
+    color: rgba(var(--color-tertiary-rgb), 0.95);
+    box-shadow: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background-color: rgba(var(--color-tertiary-rgb), 0.12);
+      transform: scale(0);
+      transition: transform 0.2s ease-out;
+    }
+
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      color: rgba(var(--color-tertiary-rgb), 1);
+      
+      &::before {
+        transform: scale(1);
+      }
+    }
+
+    &:active:not(:disabled):not([aria-disabled="true"]) {
+      color: rgba(var(--color-tertiary-rgb), 0.85);
+      
+      &::before {
+        background-color: rgba(var(--color-tertiary-rgb), 0.2);
+      }
+    }
+
+    &:focus-visible {
+      box-shadow: 0 0 0 2px rgba(var(--color-tertiary-rgb), 0.25);
+    }
+
+    &:disabled, &[aria-disabled="true"] {
+      color: rgba(var(--color-tertiary-rgb), 0.45);
+    }
+  }
+
+  /* Loading state */
+  &--loading {
+    color: transparent !important;
+    pointer-events: none;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: inherit;
+      border-radius: inherit;
+      opacity: 0.8;
+      z-index: 0;
+      backdrop-filter: blur(1px);
+    }
+  }
+
+  /* Ensure icon is properly centered and sized */
+  svg, i, span[class*="icon"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.2em;
+    height: 1.2em;
+    font-size: 1.2em;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Material Icons specific adjustment */
+  .material-icons {
+    font-size: 1.5em;
+  }
+  
+  img.icon {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+  }
+}

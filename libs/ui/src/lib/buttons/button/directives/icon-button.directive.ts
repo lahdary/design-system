@@ -9,31 +9,38 @@ import {
   input,
   output,
 } from '@angular/core';
-import { ButtonSize, ButtonType, ButtonVariant } from '../button.types';
+import { ButtonSize, ButtonType, IconButtonColor } from '../button.types';
 
 /**
- * Button directive
+ * Icon Button directive
  *
- * A directive that transforms a regular button into a design system button.
+ * A directive that transforms a regular button into a circular icon button.
+ * Designed for buttons that contain only an icon and no text.
  * Uses modern Angular signals API for reactive state management.
  *
  * @example
  * ```html
- * <button ds-ui-button>Click Me</button>
- * <button ds-ui-button variant="secondary">Secondary Button</button>
- * <button ds-ui-button [disabled]="true">Disabled Button</button>
+ * <button ds-ui-icon-button>
+ *   <svg>...</svg>
+ * </button>
+ * <button ds-ui-icon-button color="secondary" size="lg">
+ *   <i class="material-icons">add</i>
+ * </button>
+ * <button ds-ui-icon-button [disabled]="true">
+ *   <span class="icon">+</span>
+ * </button>
  * ```
  */
 @Directive({
-  selector: '[dsUiButton]',
+  selector: '[dsUiIconButton]',
   standalone: true,
 })
-export class ButtonDirective implements OnInit {
+export class IconButtonDirective implements OnInit {
   /**
-   * Button variant
+   * Button color variant
    * @default 'primary'
    */
-  variant = input<ButtonVariant>('primary');
+  color = input<IconButtonColor>('primary');
 
   /**
    * Button size
@@ -54,13 +61,7 @@ export class ButtonDirective implements OnInit {
   loading = input<boolean>(false);
 
   /**
-   * Whether the button should take full width of container
-   * @default false
-   */
-  fullWidth = input<boolean>(false);
-
-  /**
-   * ARIA label for the button
+   * ARIA label for the button (required for accessibility)
    */
   ariaLabel = input<string>('');
 
@@ -76,31 +77,23 @@ export class ButtonDirective implements OnInit {
   clicked = output<MouseEvent>();
 
   /**
-   * Computed classes for variant
-   * Automatically updates when variant changes
+   * Computed classes for color variant
+   * Automatically updates when color changes
    */
-  private variantClass = computed(() => `ds-button--${this.variant()}`);
+  private colorClass = computed(() => `ds-icon-button--${this.color()}`);
 
   /**
    * Computed classes for size
    * Automatically updates when size changes
    */
-  private sizeClass = computed(() => `ds-button--${this.size()}`);
-
-  /**
-   * Computed class for fullWidth
-   */
-  private fullWidthClass = computed(() =>
-    this.fullWidth() ? 'ds-button--full-width' : ''
-  );
+  private sizeClass = computed(() => `ds-icon-button--${this.size()}`);
 
   /**
    * Computed loading state class
    */
   private loadingClass = computed(() =>
-    this.loading() ? 'ds-button--loading' : ''
+    this.loading() ? 'ds-icon-button--loading' : ''
   );
-
   private el: ElementRef = inject(ElementRef);
   private renderer: Renderer2 = inject(Renderer2);
 
@@ -115,8 +108,16 @@ export class ButtonDirective implements OnInit {
   }
 
   ngOnInit(): void {
-    // Add base button class
+    // Add base button classes
     this.renderer.addClass(this.el.nativeElement, 'ds-button');
+    this.renderer.addClass(this.el.nativeElement, 'ds-icon-button');
+
+    // Ensure the button has an accessible name
+    if (!this.ariaLabel()) {
+      console.warn(
+        'Icon buttons should have an aria-label attribute for accessibility'
+      );
+    }
 
     // Set up click handler
     this.renderer.listen(
@@ -148,10 +149,14 @@ export class ButtonDirective implements OnInit {
 
     if (isDisabled) {
       this.renderer.setAttribute(this.el.nativeElement, 'disabled', 'disabled');
-      this.renderer.addClass(this.el.nativeElement, 'ds-button--disabled');
+      this.renderer.setAttribute(
+        this.el.nativeElement,
+        'aria-disabled',
+        'true'
+      );
     } else {
       this.renderer.removeAttribute(this.el.nativeElement, 'disabled');
-      this.renderer.removeClass(this.el.nativeElement, 'ds-button--disabled');
+      this.renderer.removeAttribute(this.el.nativeElement, 'aria-disabled');
     }
   }
 
@@ -171,40 +176,40 @@ export class ButtonDirective implements OnInit {
    * Update button classes based on current state
    */
   private updateClasses(): void {
-    // Remove all variant classes first
-    const variantClasses = [
-      'ds-button--primary',
-      'ds-button--secondary',
-      'ds-button--tertiary',
+    // Remove all color variant classes first
+    const colorClasses = [
+      'ds-icon-button--primary',
+      'ds-icon-button--secondary',
+      'ds-icon-button--tertiary',
     ];
-    variantClasses.forEach((cls) => {
+    colorClasses.forEach((cls) => {
       this.renderer.removeClass(this.el.nativeElement, cls);
     });
 
     // Remove all size classes first
-    const sizeClasses = ['ds-button--sm', 'ds-button--md', 'ds-button--lg'];
+    const sizeClasses = [
+      'ds-icon-button--sm',
+      'ds-icon-button--md',
+      'ds-icon-button--lg',
+    ];
     sizeClasses.forEach((cls) => {
       this.renderer.removeClass(this.el.nativeElement, cls);
     });
 
-    // Add current variant class
-    this.renderer.addClass(this.el.nativeElement, this.variantClass());
+    // Add current color variant class
+    this.renderer.addClass(this.el.nativeElement, this.colorClass());
 
     // Add current size class
     this.renderer.addClass(this.el.nativeElement, this.sizeClass());
 
-    // Handle fullWidth class
-    if (this.fullWidth()) {
-      this.renderer.addClass(this.el.nativeElement, 'ds-button--full-width');
-    } else {
-      this.renderer.removeClass(this.el.nativeElement, 'ds-button--full-width');
-    }
-
     // Handle loading state
     if (this.loading()) {
-      this.renderer.addClass(this.el.nativeElement, 'ds-button--loading');
+      this.renderer.addClass(this.el.nativeElement, 'ds-icon-button--loading');
     } else {
-      this.renderer.removeClass(this.el.nativeElement, 'ds-button--loading');
+      this.renderer.removeClass(
+        this.el.nativeElement,
+        'ds-icon-button--loading'
+      );
     }
   }
 }
